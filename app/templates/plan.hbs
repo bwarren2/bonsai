@@ -1,0 +1,9 @@
+<h2>Plan</h2>
+
+<ul>
+{{#each model as |task|}}
+  <li>{{task.title}}</li>
+{{else}}
+  <li>No tasks</li>
+{{/each}}
+</ul>

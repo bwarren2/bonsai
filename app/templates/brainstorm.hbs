@@ -1,0 +1,14 @@
+<h2>Brainstorm</h2>
+
+<form {{action "addTask" on="submit"}}>
+  {{input value=newTaskTitle}}
+  <input type="submit" value="add task">
+</form>
+
+<ul>
+{{#each model as |task|}}
+  <li>{{task.title}}</li>
+{{else}}
+  <li>No task</li>
+{{/each}}
+</ul>

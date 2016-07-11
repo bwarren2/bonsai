@@ -2,7 +2,17 @@
 
 <ul>
 {{#each model as |task|}}
-  <li>{{task.title}}</li>
+  <li>
+    {{task.title}}
+    (Blocks: 
+    {{#each task.blocks as |blocker|}}
+      {{blocker.title}}
+    {{/each}}
+    )
+    <button {{action 'addBlocks' task}}>add blocks</button>
+    <button {{action 'clearBlocks' task}}>clear blocks</button>
+    (NB: this interface is terribad)
+  </li>
 {{else}}
   <li>No tasks</li>
 {{/each}}

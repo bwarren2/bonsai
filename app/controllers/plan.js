@@ -13,6 +13,7 @@ export default Ember.Controller.extend({
         this.set('highlightedTask', null);
       }
     },
+
     clearBefores: function (task) {
       task.clearBefores();
     }

@@ -11,15 +11,19 @@ export default Model.extend({
 
   addBefore: function (task) {
     task.get('afters').pushObject(this);
+    task.save();
     this.get('befores').pushObject(task);
+    this.save();
   },
 
   clearBefores: function () {
     this.get('befores').then((befores) => {
       befores.forEach((before) => {
         before.get('afters').removeObject(this);
+        before.save();
       });
       this.get('befores').removeObjects(befores);
+      this.save();
     });
   }
 });

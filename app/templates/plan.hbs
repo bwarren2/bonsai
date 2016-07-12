@@ -3,15 +3,15 @@
 <ul>
 {{#each model as |task|}}
   <li>
+    <button {{action 'addBefore' task}}>add before</button>
+    <button {{action 'clearBefores' task}}>clear befores</button>
+    (NB: this interface is terribad)
     {{task.title}}
     (Befores: 
     {{#each task.befores as |before|}}
       {{before.title}}
     {{/each}}
     )
-    <button {{action 'addBefore' task}}>add before</button>
-    <button {{action 'clearBefores' task}}>clear befores</button>
-    (NB: this interface is terribad)
   </li>
 {{else}}
   <li>No tasks</li>

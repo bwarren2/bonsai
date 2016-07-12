@@ -4,13 +4,13 @@
 {{#each model as |task|}}
   <li>
     {{task.title}}
-    (Blocks: 
-    {{#each task.blocks as |blocker|}}
-      {{blocker.title}}
+    (Befores: 
+    {{#each task.befores as |before|}}
+      {{before.title}}
     {{/each}}
     )
-    <button {{action 'addBlocks' task}}>add blocks</button>
-    <button {{action 'clearBlocks' task}}>clear blocks</button>
+    <button {{action 'addBefore' task}}>add before</button>
+    <button {{action 'clearBefores' task}}>clear befores</button>
     (NB: this interface is terribad)
   </li>
 {{else}}

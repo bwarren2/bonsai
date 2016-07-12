@@ -4,17 +4,17 @@ export default Ember.Controller.extend({
   highlightedTask: null,
 
   actions: {
-    addBlocks: function (task) {
+    addBefore: function (task) {
       const highlightedTask = this.get('highlightedTask');
       if (!highlightedTask) {
         this.set('highlightedTask', task);
       } else {
-        this.get('highlightedTask').addBlocks(task);
+        this.get('highlightedTask').addBefore(task);
         this.set('highlightedTask', null);
       }
     },
-    clearBlocks: function (task) {
-      task.clearBlocks();
+    clearBefores: function (task) {
+      task.clearBefores();
     }
   }
 });

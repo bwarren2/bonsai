@@ -1,33 +1,25 @@
 import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   title: attr('string'),
   completed: attr('boolean'),
-  blocks: hasMany('task', { inverse: 'blockers' }),
-  blockers: belongsTo('task', { inverse: 'blocks' }),
+  befores: hasMany('task', { inverse: 'afters' }),
+  afters: hasMany('task', { inverse: 'befores' }),
 
-  blocksCount: Ember.computed('blocks', function () {
-    return this.get('blocks').length;
-  }),
-
-  blockersCount: Ember.computed('blockers', function () {
-    return this.get('blockers').length;
-  }),
-
-  addBlocks: function (task) {
-    task.set('blockers', this);
-    this.get('blocks').pushObject(task);
+  addBefore: function (task) {
+    task.get('afters').pushObject(this);
+    this.get('befores').pushObject(task);
   },
 
-  clearBlocks: function () {
-    this.get('blocks').then((blocks) => {
-      blocks.forEach((block) => {
-        block.set('blockers', null);
+  clearBefores: function () {
+    this.get('befores').then((befores) => {
+      befores.forEach((before) => {
+        before.get('afters').removeObject(this);
       });
-      this.get('blocks').removeObjects(blocks);
+      this.get('befores').removeObjects(befores);
     });
   }
 });

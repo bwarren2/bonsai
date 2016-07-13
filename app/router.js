@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('brainstorm');
+  this.route('refine');
   this.route('plan');
   this.route('execute');
   this.route('review');

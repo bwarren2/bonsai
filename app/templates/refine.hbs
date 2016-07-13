@@ -1,1 +1,12 @@
 <h2>Refine</h2>
+
+<ul>
+  {{#each model as |task|}}
+    <li>
+      <button {{action "complete" task}}>complete</button>
+      {{task.title}}
+    </li>
+  {{else}}
+    <li>No tasks</li>
+  {{/each}}
+</ul>

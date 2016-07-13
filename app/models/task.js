@@ -9,14 +9,14 @@ export default Model.extend({
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
 
-  addBefore: function (task) {
+  addBefore (task) {
     task.get('afters').pushObject(this);
     task.save();
     this.get('befores').pushObject(task);
     this.save();
   },
 
-  clearBefores: function () {
+  clearBefores () {
     this.get('befores').then((befores) => {
       befores.forEach((before) => {
         before.get('afters').removeObject(this);

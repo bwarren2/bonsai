@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   highlightedTask: null,
 
   actions: {
-    addBefore: function (task) {
+    addBefore (task) {
       const highlightedTask = this.get('highlightedTask');
       if (!highlightedTask) {
         this.set('highlightedTask', task);
@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
       }
     },
 
-    clearBefores: function (task) {
+    clearBefores (task) {
       task.clearBefores();
     }
   }

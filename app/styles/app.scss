@@ -1,0 +1,58 @@
+$default-margin: 20px;
+$gray-light: #e1e1e1;
+$gray-medium: #aaa;
+$green: #2ecc71;
+$white: #fff;
+$black: #111;
+
+.completed {
+  text-decoration: line-through;
+}
+
+.task-card {
+  min-width: 20em;
+  min-height: 20em;
+  overflow: hidden;
+
+  .task-befores,
+  .task-afters {
+    .title {
+      color: $green;
+    }
+  }
+}
+
+.draggable-dropzone {
+  display: block;
+  border: 3px dashed $black;
+  padding: $default-margin / 2;
+  width: 90%;
+  min-height: $default-margin * 2.5;
+  color: $black;
+  margin-bottom: $default-margin / 2;
+
+  &.activated {
+    border-color: $green;
+  }
+
+  &.deactivated {
+    border-color: $gray-medium;
+  }
+}
+
+.draggable-item[draggable=true] {
+  display: inline-block;
+  list-style: none;
+  min-width: $default-margin;
+  min-height: $default-margin;
+  background: $gray-light;
+  padding: $default-margin / 4 $default-margin / 2;
+  margin: $default-margin / 4;
+  -moz-user-select: none;
+  -khtml-user-drag: element;
+  cursor: move;
+
+  &:hover {
+    background-color: $gray-medium;
+  }
+}

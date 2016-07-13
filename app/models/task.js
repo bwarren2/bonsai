@@ -9,9 +9,22 @@ export default Model.extend({
   afters: hasMany('task', { inverse: 'befores' }),
 
   addBefore (task) {
+    if (task.get('id') === this.get('id')) {
+      return;
+    }
     task.get('afters').pushObject(this);
     task.save();
     this.get('befores').pushObject(task);
+    this.save();
+  },
+
+  addAfter (task) {
+    if (task.get('id') === this.get('id')) {
+      return;
+    }
+    task.get('befores').pushObject(this);
+    task.save();
+    this.get('afters').pushObject(task);
     this.save();
   },
 

@@ -1,19 +1,29 @@
 <h2>Plan</h2>
 
-<ul>
-{{#each model as |task|}}
-  <li>
-    <button {{action 'addBefore' task}}>add before</button>
-    <button {{action 'clearBefores' task}}>clear befores</button>
-    (NB: this interface is terribad)
-    {{task.title}}
-    (Befores: 
-    {{#each task.befores as |before|}}
-      {{before.title}}
-    {{/each}}
-    )
-  </li>
-{{else}}
-  <li>No tasks</li>
-{{/each}}
-</ul>
+<div class="task-cards">
+  {{#each model as |task|}}
+    {{#draggable-item content=task.id}}
+      <div class="task-card">
+        <div class="task-title">{{task.title}}</div>
+        <div class="task-befores">
+          {{#draggable-dropzone dropped="addBefore" target=task}}
+            <div class="title">befores</div>
+            {{#each task.befores as |beforeTask|}}
+              <div>{{beforeTask.title}}</div>
+            {{/each}}
+          {{/draggable-dropzone}}
+        </div>
+        <div class="task-afters">
+          {{#draggable-dropzone dropped="addAfter" target=task}}
+            <div class="title">afters</div>
+            {{#each task.afters as |afterTask|}}
+              <div>{{afterTask.title}}</div>
+            {{/each}}
+          {{/draggable-dropzone}}
+        </div>
+      </div>
+    {{/draggable-item}}
+  {{else}}
+    <li>No tasks</li>
+  {{/each}}
+</div>

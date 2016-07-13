@@ -4,7 +4,6 @@
   {{#each model as |task|}}
     {{#draggable-item content=task.id}}
       <div class="task-card">
-        <div class="task-title">{{task.title}}</div>
         <div class="task-befores">
           {{#draggable-dropzone dropped="addBefore" target=task}}
             <div class="title">befores</div>
@@ -13,6 +12,7 @@
             {{/each}}
           {{/draggable-dropzone}}
         </div>
+        <div class="task-title">{{task.title}}</div>
         <div class="task-afters">
           {{#draggable-dropzone dropped="addAfter" target=task}}
             <div class="title">afters</div>

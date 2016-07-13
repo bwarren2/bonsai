@@ -1,8 +1,10 @@
 <h2>Brainstorm</h2>
 
-<form {{action "addTask" on="submit"}}>
-  {{input value=newTaskTitle}}
-  <input type="submit" value="add task">
+<form {{action "addTask" on="submit"}} class="form-inline">
+  <div class="form-group">
+    {{input value=newTaskTitle class="form-control" placeholder='Task...'}}
+  </div>
+  <button type="submit" class="btn btn-default">add task</button>
 </form>
 
 <ul>

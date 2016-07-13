@@ -9,9 +9,30 @@ $black: #111;
   text-decoration: line-through;
 }
 
+.task-befores,
+.task-afters {
+  width: 100px;
+}
+	
+.task-title {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 10px;
+
+  margin: $default-margin / 2;
+  padding: $default-margin / 2;
+}
+	
 .task-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
+
   min-width: 20em;
-  min-height: 20em;
+  min-height: 10em;
   overflow: hidden;
 
   .task-befores,
@@ -23,13 +44,11 @@ $black: #111;
 }
 
 .draggable-dropzone {
-  display: block;
   border: 3px dashed $black;
+  height: 90%;
   padding: $default-margin / 2;
-  width: 90%;
-  min-height: $default-margin * 2.5;
   color: $black;
-  margin-bottom: $default-margin / 2;
+  margin: $default-margin / 2;
 
   &.activated {
     border-color: $green;
@@ -42,9 +61,6 @@ $black: #111;
 
 .draggable-item[draggable=true] {
   display: inline-block;
-  list-style: none;
-  min-width: $default-margin;
-  min-height: $default-margin;
   background: $gray-light;
   padding: $default-margin / 4 $default-margin / 2;
   margin: $default-margin / 4;

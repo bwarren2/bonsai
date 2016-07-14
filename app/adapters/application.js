@@ -1,5 +1,1 @@
-import LSAdapter from 'ember-localstorage-adapter';
-
-export default LSAdapter.extend({
-  namespace: 'bonsai'
-});
+export { default } from 'ember-local-storage/adapters/adapter';

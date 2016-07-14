@@ -3,7 +3,7 @@
 <ul>
   {{#each model as |task|}}
     <li>
-      <button {{action "complete" task}}>complete</button>
+      <button {{action "complete" task}} class="btn btn-default">complete</button>
       {{task.title}}
     </li>
   {{else}}

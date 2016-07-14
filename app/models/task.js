@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
@@ -7,6 +8,10 @@ export default Model.extend({
   completed: attr('boolean'),
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
+
+  // Eventually, this should be "has incomplete befores"
+  hasBefores: Ember.computed.notEmpty('befores'),
+  hasAfters: Ember.computed.notEmpty('afters'),
 
   addBefore (task) {
     if (task.get('id') === this.get('id')) {

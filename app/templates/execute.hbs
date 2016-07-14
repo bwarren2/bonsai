@@ -4,7 +4,7 @@
 {{#each model as |task|}}
   <li class="{{if task.completed 'completed' ''}}">
     {{task.title}}
-    <button {{action 'complete' task}}>complete</button>
+    <button {{action 'complete' task}} class="btn btn-default">complete</button>
   </li>
 {{else}}
   <li>No tasks</li>

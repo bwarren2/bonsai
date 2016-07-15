@@ -19,6 +19,11 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  app.import(app.bowerDirectory + '/cytoscape/dist/cytoscape.min.js');
+  app.import(app.bowerDirectory + '/lodash/lodash.min.js');
+  app.import(app.bowerDirectory + '/graphlib/dist/graphlib.core.min.js');
+  app.import(app.bowerDirectory + '/dagre/dist/dagre.core.min.js');
+  app.import(app.bowerDirectory + '/cytoscape-dagre/cytoscape-dagre.js');
 
   return app.toTree();
 };

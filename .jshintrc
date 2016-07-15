@@ -1,6 +1,9 @@
 {
   "predef": [
     "document",
+    "cytoscape",
+    "dagre",
+    "cydagre",
     "window",
     "-Promise"
   ],

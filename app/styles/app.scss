@@ -1,10 +1,3 @@
-$default-margin: 20px;
-$gray-light: #e1e1e1;
-$gray-medium: #aaa;
-$green: #2ecc71;
-$white: #fff;
-$black: #111;
-
 .cy {
   width: 900px;
   height: 400px;
@@ -13,68 +6,4 @@ $black: #111;
 
 .completed {
   text-decoration: line-through;
-}
-
-.task-befores,
-.task-afters {
-  width: 100px;
-}
-	
-.task-title {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 10px;
-
-  margin: $default-margin / 2;
-  padding: $default-margin / 2;
-}
-	
-.task-card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: stretch;
-  align-items: stretch;
-
-  min-width: 20em;
-  min-height: 10em;
-  overflow: hidden;
-
-  .task-befores,
-  .task-afters {
-    .title {
-      color: $green;
-    }
-  }
-}
-
-.draggable-dropzone {
-  border: 3px dashed $black;
-  height: 90%;
-  padding: $default-margin / 2;
-  color: $black;
-  margin: $default-margin / 2;
-
-  &.activated {
-    border-color: $green;
-  }
-
-  &.deactivated {
-    border-color: $gray-medium;
-  }
-}
-
-.draggable-item[draggable=true] {
-  display: inline-block;
-  background: $gray-light;
-  padding: $default-margin / 4 $default-margin / 2;
-  margin: $default-margin / 4;
-  -moz-user-select: none;
-  -khtml-user-drag: element;
-  cursor: move;
-
-  &:hover {
-    background-color: $gray-medium;
-  }
 }

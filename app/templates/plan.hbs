@@ -1,31 +1,3 @@
 <h2>Plan</h2>
 
-<div class="task-cards">
-  {{#each model as |task|}}
-    {{#draggable-item content=task.id}}
-      <div class="task-card">
-        <div class="task-befores">
-          {{#draggable-dropzone dropped="addBefore" target=task}}
-            <div class="title">befores</div>
-            {{#each task.befores as |beforeTask|}}
-              <div>{{beforeTask.title}}</div>
-            {{/each}}
-          {{/draggable-dropzone}}
-        </div>
-        <div class="task-title">{{task.title}}</div>
-        <div class="task-afters">
-          {{#draggable-dropzone dropped="addAfter" target=task}}
-            <div class="title">afters</div>
-            {{#each task.afters as |afterTask|}}
-              <div>{{afterTask.title}}</div>
-            {{/each}}
-          {{/draggable-dropzone}}
-        </div>
-      </div>
-    {{/draggable-item}}
-  {{else}}
-    <li>No tasks</li>
-  {{/each}}
-</div>
-
 {{task-graph data=taskGraphData}}

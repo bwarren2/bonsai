@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  taskGraphData: Ember.computed('model.@each.title', 'model.@each.afters', function () {
+    return this.get('model');
+  }),
+
   actions: {
     clearBefores (task) {
       task.clearBefores();

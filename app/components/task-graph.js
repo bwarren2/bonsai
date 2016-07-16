@@ -43,6 +43,7 @@ export default Ember.Component.extend({
             selector: 'node',
             style: {
               'background-color': '#666',
+              'text-valign': 'bottom',
               'label': 'data(id)'
             }
           },
@@ -50,6 +51,9 @@ export default Ember.Component.extend({
           {
             selector: 'edge',
             style: {
+              // The default haystack edges don't support arrows on the ends,
+              // so:
+              'curve-style': 'bezier',
               'width': 3,
               'line-color': '#ccc',
               'target-arrow-color': '#ccc',

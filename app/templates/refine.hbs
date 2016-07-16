@@ -4,6 +4,7 @@
   {{#each model as |task|}}
     <li>
       <button {{action "complete" task}} class="btn btn-default">complete</button>
+      <button {{action "remove" task}} class="btn btn-default">remove</button>
       {{task.title}}
     </li>
   {{else}}

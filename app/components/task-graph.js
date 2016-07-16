@@ -12,20 +12,17 @@ export default Ember.Component.extend({
     const element = this.get('element');
     this.$(element).addClass('cy');
 
-    /* */
-    RSVP.all(this.get('data').map((task, idx) => {
-      return task.get('afters').then((afters) => afters.map(
-        (after, jdx) => {
-          return {
-            data: {
-              id: `edge-${jdx}-${idx}`,
-              source: task.get('title'),
-              target: after.get('title')
-            }
-          };
-        }
-      ));
-    })).then((resolvedEdges) => {
+    RSVP.all(this.get('data').map(
+      (task, idx) => task.get('afters').then((afters) => afters.map(
+        (after, jdx) => ({
+          data: {
+            id: `edge-${jdx}-${idx}`,
+            source: task.get('title'),
+            target: after.get('title')
+          }
+        })
+      ))
+    )).then((resolvedEdges) => {
       const nodes = this.get('data').map(
         (task) => ({ data: { id: task.get('title') } })
       );
@@ -43,7 +40,10 @@ export default Ember.Component.extend({
             selector: 'node',
             style: {
               'background-color': '#666',
-              'text-valign': 'bottom',
+              'text-valign': 'center',
+              'color': '#fff',
+              'text-outline-color': '#666',
+              'text-outline-width': 2,
               'label': 'data(id)'
             }
           },
@@ -64,9 +64,11 @@ export default Ember.Component.extend({
 
         layout: {
           name: 'dagre'
-        }
+        },
+
+        userZoomingEnabled: false,
+        userPanningEnabled: false
       });
     });
-    /* */
   }
 });

@@ -1,3 +1,5 @@
 <h2>Plan</h2>
 
-{{task-graph data=taskGraphData}}
+{{task-graph data=taskGraphData addAfter=(action "addAfter")}}
+
+<button class="btn btn-danger" {{action "clearDependencies"}}>clear</button>

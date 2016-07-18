@@ -11,24 +11,31 @@ export default Ember.Component.extend({
     // const currentPath = history.state.path;
     const element = this.get('element');
     this.$(element).addClass('cy');
+    // Used in edgehandle callbacks below:
+    const comp = this;
 
     RSVP.all(this.get('data').map(
       (task, idx) => task.get('afters').then((afters) => afters.map(
         (after, jdx) => ({
           data: {
             id: `edge-${jdx}-${idx}`,
-            source: task.get('title'),
-            target: after.get('title')
+            source: task.get('id'),
+            target: after.get('id')
           }
         })
       ))
     )).then((resolvedEdges) => {
       const nodes = this.get('data').map(
-        (task) => ({ data: { id: task.get('title') } })
+        (task) => ({
+          data: {
+            id: task.get('id'),
+            title: task.get('title')
+          }
+        })
       );
       const edges = _.flatten(resolvedEdges);
       // cytoscape comes from bower installs, so is globally available.
-      cytoscape({
+      const cy = cytoscape({
         container: element,
         elements: [
           ...nodes,
@@ -44,7 +51,7 @@ export default Ember.Component.extend({
               'color': '#fff',
               'text-outline-color': '#666',
               'text-outline-width': 2,
-              'label': 'data(id)'
+              'label': 'data(title)'
             }
           },
 
@@ -68,6 +75,12 @@ export default Ember.Component.extend({
 
         userZoomingEnabled: false,
         userPanningEnabled: false
+      });
+      cy.edgehandles({
+        toggleOffOnLeave: true,
+        complete (sourceNode, targetNodes) {
+          comp.sendAction('addAfter', sourceNode.id(), targetNodes[0].id());
+        }
       });
     });
   }

@@ -41,9 +41,15 @@ body {
   text-decoration: line-through;
 }
 
-.task-card {
-  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  margin-bottom: -20px;
+.task-cards {
+  & .task-card:nth-child(odd) {
+    margin-left: 26%;
+  }
+
+  & .task-card {
+    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+    margin-bottom: -20px;
+  }
 }

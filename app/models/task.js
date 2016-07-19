@@ -42,5 +42,16 @@ export default Model.extend({
       this.get('befores').removeObjects(befores);
       this.save();
     });
+  },
+
+  clearAfters () {
+    this.get('afters').then((afters) => {
+      afters.forEach((after) => {
+        after.get('befores').removeObject(this);
+        after.save();
+      });
+      this.get('afters').removeObjects(afters);
+      this.save();
+    });
   }
 });

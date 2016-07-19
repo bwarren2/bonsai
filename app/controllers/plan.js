@@ -8,7 +8,8 @@ export default Ember.Controller.extend({
   actions: {
     clearDependencies () {
       this.get('model').forEach((task) => {
-        task.clearBefores();  // This will clear reciprocal relationships too.
+        task.clearBefores();
+        task.clearAfters();
       });
     },
 

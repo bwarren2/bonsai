@@ -14,9 +14,15 @@ export default Model.extend({
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
 
-  // Eventually, this should be "has incomplete befores"
-  hasBefores: Ember.computed.notEmpty('befores'),
-  hasAfters: Ember.computed.notEmpty('afters'),
+  readyToExecute: Ember.computed('befores.@each.completed', function () {
+    return this.get('befores').then((befores) => {
+      const ret = befores.filter(
+        (before) => !before.get('completed')
+      ).length === 0;
+      console.warn(this.get('title'), ret);
+      return ret && !this.get('completed');
+    });
+  }),
 
   addBefore (task) {
     if (task.get('id') === this.get('id')) {

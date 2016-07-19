@@ -2,10 +2,12 @@
 
 <ul>
 {{#each model as |task|}}
-  <li class="{{if task.completed 'completed' ''}}">
-    {{task.title}}
-    <button {{action 'complete' task}} class="btn btn-default">complete</button>
-  </li>
+  {{#if (await task.readyToExecute)}}
+    <li class="{{if task.completed 'completed' ''}}">
+      {{task.title}}
+      <button {{action 'complete' task}} class="btn btn-default">complete</button>
+    </li>
+  {{/if}}
 {{else}}
   <li>No tasks</li>
 {{/each}}

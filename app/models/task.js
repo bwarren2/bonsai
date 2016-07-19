@@ -5,6 +5,11 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   title: attr('string'),
+  created: attr('date', {
+    defaultValue () {
+      return new Date();
+    }
+  }),
   completed: attr('boolean'),
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),

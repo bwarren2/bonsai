@@ -24,7 +24,7 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/graphlib/dist/graphlib.core.min.js');
   app.import(app.bowerDirectory + '/dagre/dist/dagre.core.min.js');
   app.import(app.bowerDirectory + '/cytoscape-dagre/cytoscape-dagre.js');
-  app.import(app.bowerDirectory + '/cytoscape-edgehandles/cytoscape-edgehandles.js');
+  app.import('vendor/cytoscape-edgehandles/cytoscape-edgehandles.js');
 
   return app.toTree();
 };

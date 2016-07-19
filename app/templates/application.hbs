@@ -16,12 +16,22 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li>{{#link-to 'brainstorm'}}braindump{{/link-to}}</li>
-        <li>{{#link-to 'refine'}}refine{{/link-to}}</li>
-        <li>{{#link-to 'plan'}}plan{{/link-to}}</li>
-        <li>{{#link-to 'execute'}}execute{{/link-to}}</li>
-        <li>{{#link-to 'review'}}review{{/link-to}}</li>
+      <ul class="nav navbar-nav navbar-right">
+        {{#active-link}}
+          {{#link-to 'brainstorm'}}braindump{{/link-to}}
+        {{/active-link}}
+        {{#active-link}}
+          {{#link-to 'refine'}}refine{{/link-to}}
+        {{/active-link}}
+        {{#active-link}}
+          {{#link-to 'plan'}}plan{{/link-to}}
+        {{/active-link}}
+        {{#active-link}}
+          {{#link-to 'execute'}}execute{{/link-to}}
+        {{/active-link}}
+        {{#active-link}}
+          {{#link-to 'review'}}review{{/link-to}}
+        {{/active-link}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -41,10 +41,10 @@ export default Ember.Component.extend({
       this.renderGraph();
     } else {
       // Because animations take time, and then screw with the canvas click
-      // events.
+      // events, we wait.
       Ember.run.later(() => {
         this.renderGraph();
-      }, 2000);
+      }, 1000);
     }
   },
 

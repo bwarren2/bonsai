@@ -78,7 +78,8 @@ export default Ember.Component.extend({
             data: {
               id: task.get('id'),
               title: task.get('title')
-            }
+            },
+            classes: task.get('completed') ? 'complete' : ''
           })
         );
         const edges = _.flatten(resolvedEdges);
@@ -103,6 +104,14 @@ export default Ember.Component.extend({
                 'text-outline-color': '#666',
                 'text-outline-width': 2,
                 'label': 'data(title)'
+              }
+            },
+
+            {
+              selector: 'node.complete',
+              style: {
+                'text-opacity': 0.7,
+                'opacity': 0.3
               }
             },
 

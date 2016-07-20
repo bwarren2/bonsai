@@ -1,13 +1,15 @@
-<h2>Refine</h2>
+<div class="container">
+  <h2>Refine</h2>
 
-<ul>
-  {{#each model as |task|}}
-    <li>
-      <button {{action "complete" task}} class="btn btn-default">complete</button>
-      <button {{action "remove" task}} class="btn btn-default">remove</button>
-      {{task.title}}
-    </li>
-  {{else}}
-    <li>No tasks</li>
-  {{/each}}
-</ul>
+  <ul>
+    {{#each model as |task|}}
+      <li>
+        <button {{action "complete" task}} class="btn btn-default">complete</button>
+        <button {{action "remove" task}} class="btn btn-default">remove</button>
+        {{task.title}}
+      </li>
+    {{else}}
+      <li>No tasks</li>
+    {{/each}}
+  </ul>
+</div>

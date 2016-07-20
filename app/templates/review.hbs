@@ -1,9 +1,11 @@
-<h2>Review</h2>
+<div class="container">
+  <h2>Review</h2>
 
-<ul>
-{{#each model as |task|}}
-  <li>{{task.title}}</li>
-{{else}}
-  <li>No tasks</li>
-{{/each}}
-</ul>
+  <ul>
+    {{#each model as |task|}}
+      <li>{{task.title}}</li>
+    {{else}}
+      <li>No tasks</li>
+    {{/each}}
+  </ul>
+</div>

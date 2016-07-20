@@ -14,13 +14,18 @@ export default Model.extend({
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
 
+  // Goofy, but enables templates to correctly render boolean HTML attributes:
+  notCompleted: Ember.computed.not('completed'),
+
+  hasAfters: Ember.computed.notEmpty('afters'),
+
   readyToExecute: Ember.computed('befores.@each.completed', function () {
     return this.get('befores').then((befores) => {
       const ret = befores.filter(
         (before) => !before.get('completed')
       ).length === 0;
       console.warn(this.get('title'), ret);
-      return ret && !this.get('completed');
+      return ret;
     });
   }),
 

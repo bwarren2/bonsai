@@ -5,7 +5,11 @@ export default Ember.Controller.extend({
     complete (task) {
       task.set('completed', true);
       task.save();
-      // TODO: Take this task off the top, reveal the next one.
+    },
+
+    uncomplete (task) {
+      task.set('completed', false);
+      task.save();
     }
   }
 });

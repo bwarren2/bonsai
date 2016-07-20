@@ -1,16 +1,29 @@
 <div class="container">
   <h2>Execute</h2>
 
-  <ul>
+  <div class="task-cards-execute">
     {{#each model as |task|}}
       {{#if (await task.readyToExecute)}}
-        <li class="{{if task.completed 'completed' ''}}">
-          <button {{action 'complete' task}} class="btn btn-default">complete</button>
+        {{#unless task.completed}}
+          {{#if task.hasAfters}}
+            <div class="card-stack well"></div>
+            <div class="card-stack well"></div>
+            <div class="card-stack well"></div>
+            <div class="card-stack well"></div>
+          {{/if}}
+        {{/unless}}
+        <div class="task-card well {{if task.completed 'completed'}}">
+          <div class="actions btn-group">
+            <button class="btn btn-default" disabled={{task.completed}} {{action 'complete' task}} aria-label="complete">
+              complete
+            </button>
+            <button class="btn btn-default" disabled={{task.notCompleted}} {{action 'uncomplete' task}} aria-label="uncomplete">
+              uncomplete
+            </button>
+          </div>
           {{task.title}}
-        </li>
+        </div>
       {{/if}}
-    {{else}}
-      <li>No tasks</li>
     {{/each}}
-  </ul>
+  </div>
 </div>

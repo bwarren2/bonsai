@@ -142,7 +142,6 @@ export default Ember.Component.extend({
           },
 
           complete (sourceNode, targetNodes) {
-            // TODO: get failure from this action, cancel line draw.
             const sourceNodeId = sourceNode.id();
             const targetNodeId = targetNodes[0].id();
             comp.sendAction('addAfter', sourceNodeId, targetNodeId);

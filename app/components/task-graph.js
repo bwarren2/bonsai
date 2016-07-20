@@ -5,6 +5,8 @@ import toposort from '../toposort';
 const { RSVP } = Ember;
 
 export default Ember.Component.extend({
+  graphReady: false,
+
   /*
    * Returns a promise of [ [ from, to ], ... ]
    */
@@ -35,12 +37,23 @@ export default Ember.Component.extend({
   },
 
   didRender () {
-    // Ember's path component shenanigans break SVG marker IDs, so we need to
-    // prepend the path component we actually see right now, to make markers
-    // work.
-    // const currentPath = history.state.path;
-    const element = this.get('element');
-    this.$(element).addClass('cy');
+    if (this.get('graphReady')) {
+      this.renderGraph();
+    } else {
+      // Because animations take time, and then screw with the canvas click
+      // events.
+      Ember.run.later(() => {
+        this.renderGraph();
+      }, 2000);
+    }
+  },
+
+  renderGraph () {
+    this.set('graphReady', true);
+    // Super-brittle, related to task-graph.hbs:
+    const element = this.$(this.get('element')).children().children('.cy');
+    element.addClass('activated');
+
     // Used in edgehandle callbacks below:
     const comp = this;
     this.getFullGraphInEdgeForm().then((graph) => {
@@ -116,6 +129,9 @@ export default Ember.Component.extend({
         });
         cy.edgehandles({
           toggleOffOnLeave: true,
+          handleSize: 15,
+          handleColor: 'rgba(255, 0, 0, 0.3)',
+          hoverDelay: 0,
 
           edgeType (sourceNode, targetNode) {
             const cycle = comp.wouldCreateCycle(sourceNode.id(), targetNode.id());

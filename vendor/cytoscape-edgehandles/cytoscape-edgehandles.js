@@ -1037,7 +1037,7 @@ SOFTWARE.
 
               var hr = options().handleSize / 2 * cy.zoom();
               var hx = p.x;
-              var hy = p.y - h / 2;
+              var hy = p.y;
 
               drawHandle( hx, hy, hr );
 
@@ -1170,7 +1170,7 @@ SOFTWARE.
 
                 hr = options().handleSize / 2 * cy.zoom();
                 hx = p.x;
-                hy = p.y - h / 2 - hr / 2;
+                hy = p.y;
 
                 drawHandle( hx, hy, hr );
 
@@ -1251,7 +1251,7 @@ SOFTWARE.
 
                   var hr = options().handleSize / 2 * cy.zoom();
                   var hx = p.x;
-                  var hy = p.y - h / 2;
+                  var hy = p.y;
 
                   drawHandle( hx, hy, hr );
 

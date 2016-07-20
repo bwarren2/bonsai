@@ -122,14 +122,11 @@ export default Ember.Component.extend({
 
           layout: {
             name: 'dagre'
-          },
-
-          userZoomingEnabled: false,
-          userPanningEnabled: false
+          }
         });
         cy.edgehandles({
           toggleOffOnLeave: true,
-          handleSize: 15,
+          handleSize: 30,
           handleColor: 'rgba(255, 0, 0, 0.3)',
           hoverDelay: 0,
 

@@ -24,7 +24,6 @@ export default Model.extend({
       const ret = befores.filter(
         (before) => !before.get('completed')
       ).length === 0;
-      console.warn(this.get('title'), ret);
       return ret;
     });
   }),

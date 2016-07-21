@@ -58,36 +58,32 @@ body {
 .task-cards {
   margin-bottom: 35px;
 
+  .task-card {
+    margin-bottom: -20px;
+  }
+
   .task-card:nth-child(odd) {
     margin-left: 26%;
   }
-
-  .task-card {
-    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-    margin-bottom: -20px;
-  }
 }
 
-.task-cards-execute {
-  .task-card {
-    -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-    -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+.task-card {
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
 
-    &.completed {
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
-
-    .actions {
-      float: right;
-      position: relative;
-      top: -6px;
-    }
+  &.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
   }
 
+  .actions {
+    float: right;
+    position: relative;
+    top: -6px;
+  }
+}
+.task-cards-execute {
   .card-stack {
     -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
     -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);

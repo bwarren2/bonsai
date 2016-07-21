@@ -10,7 +10,12 @@ export default Model.extend({
       return new Date();
     }
   }),
-  completed: attr('boolean'),
+  refined: attr('boolean', {
+    defaultValue: false
+  }),
+  completed: attr('boolean', {
+    defaultValue: false
+  }),
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
 

@@ -53,6 +53,20 @@ export default Model.extend({
     this.save();
   },
 
+  removeBefore (task) {
+    task.get('afters').removeObject(this);
+    task.save();
+    this.get('befores').removeObject(task);
+    this.save();
+  },
+
+  removeAfter (task) {
+    task.get('befores').removeObject(this);
+    task.save();
+    this.get('afters').removeObject(task);
+    this.save();
+  },
+
   clearBefores () {
     this.get('befores').then((befores) => {
       befores.forEach((before) => {

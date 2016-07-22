@@ -6,17 +6,16 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    clearDependencies () {
-      this.get('model').forEach((task) => {
-        task.clearBefores();
-        task.clearAfters();
-      });
+    addAfter (sourceId, targetId) {
+      const source = this.get('model').findBy('id', sourceId);
+      const target = this.get('model').findBy('id', targetId);
+      source.addAfter(target);
     },
 
-    addAfter (taskId, targetId) {
-      const task = this.get('model').findBy('id', taskId);
+    removeAfter (sourceId, targetId) {
+      const source = this.get('model').findBy('id', sourceId);
       const target = this.get('model').findBy('id', targetId);
-      task.addAfter(target);
+      source.removeAfter(target);
     }
   }
 });

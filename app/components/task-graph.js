@@ -133,6 +133,13 @@ export default Ember.Component.extend({
             name: 'dagre'
           }
         });
+        cy.on('tap', (evt) => {
+          if (evt.cyTarget && evt.cyTarget.id().startsWith('edge-')) {
+            const sourceNodeId = evt.cyTarget.data().source;
+            const targetNodeId = evt.cyTarget.data().target;
+            comp.sendAction('removeAfter', sourceNodeId, targetNodeId);
+          }
+        });
         cy.edgehandles({
           toggleOffOnLeave: true,
           handleSize: 30,

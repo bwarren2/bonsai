@@ -1,7 +1,16 @@
 <div class="container">
   <h2>Plan</h2>
 
-  {{task-graph data=taskGraphData addAfter=(action "addAfter")}}
+  {{task-graph data=taskGraphData addAfter=(action "addAfter") removeAfter=(action "removeAfter")}}
 
-  <button class="btn btn-danger" {{action "clearDependencies"}}>clear</button>
+  <div class="help-text">
+    <small>
+      Some explanatory text goes here. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Cur fortior sit, si illud, quod tute concedis, asperum et
+      vix ferendum putabit? Quippe: habes enim a rhetoribus; Et non ex maxima
+      parte de tota iudicabis? Roges enim Aristonem, bonane ei videantur haec:
+      vacuitas doloris, divitiae, valitudo; Quae qui non vident, nihil umquam
+      magnum ac cognitione dignum amaverunt.
+    </small>
+  </div>
 </div>

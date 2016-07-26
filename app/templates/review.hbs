@@ -1,11 +1,18 @@
 <div class="container">
   <h2>Review</h2>
 
-  <ul>
+  <div class="task-cards-execute">
     {{#each model as |task|}}
-      <li>{{task.title}}</li>
-    {{else}}
-      <li>No tasks</li>
+      {{#if task.completed}}
+        <div class="task-card well">
+          <div class="actions btn-group">
+            <button class="btn btn-default" {{action 'reject' task}} aria-label="reject">
+              reject
+            </button>
+          </div>
+          {{task.title}}
+        </div>
+      {{/if}}
     {{/each}}
-  </ul>
+  </div>
 </div>

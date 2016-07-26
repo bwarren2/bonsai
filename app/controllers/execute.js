@@ -5,11 +5,6 @@ export default Ember.Controller.extend({
     complete (task) {
       task.set('completed', true);
       task.save();
-    },
-
-    uncomplete (task) {
-      task.set('completed', false);
-      task.save();
     }
   }
 });

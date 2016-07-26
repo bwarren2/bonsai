@@ -28,4 +28,10 @@ export default function(){
     this.use('toRight'),
     this.reverse('toLeft')
   );
+
+  this.transition(
+    this.hasClass('task-animation'),
+    this.use('fade', { duration: 500 }),
+    this.reverse('fade', { duration: 500 })
+  );
 }

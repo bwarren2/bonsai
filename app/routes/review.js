@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model () {
-    return this.store.query('task', {
-      filter: {
-        completed: true
-      }
-    });
+    return this.store.findAll('task');
   }
 });

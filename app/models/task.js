@@ -24,12 +24,12 @@ export default Model.extend({
 
   hasAfters: Ember.computed.notEmpty('afters'),
 
-  readyToExecute: Ember.computed('befores.@each.completed', function () {
+  readyToExecute: Ember.computed('completed', 'befores.@each.completed', function () {
     return this.get('befores').then((befores) => {
       const ret = befores.filter(
         (before) => !before.get('completed')
       ).length === 0;
-      return ret;
+      return ret && !this.get('completed');
     });
   }),
 

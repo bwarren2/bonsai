@@ -3,7 +3,7 @@
 
   <div class="task-cards-execute">
     {{#each model as |task|}}
-      {{#if (await task.readyToExecute)}}
+      {{#liquid-if (await task.readyToExecute) class="task-animation"}}
         {{#unless task.completed}}
           {{#if task.hasAfters}}
             <div class="card-stack well"></div>
@@ -12,18 +12,15 @@
             <div class="card-stack well"></div>
           {{/if}}
         {{/unless}}
-        <div class="task-card well {{if task.completed 'completed'}}">
+        <div class="task-card well">
           <div class="actions btn-group">
             <button class="btn btn-default" disabled={{task.completed}} {{action 'complete' task}} aria-label="complete">
               complete
             </button>
-            <button class="btn btn-default" disabled={{task.notCompleted}} {{action 'uncomplete' task}} aria-label="uncomplete">
-              uncomplete
-            </button>
           </div>
           {{task.title}}
         </div>
-      {{/if}}
+      {{/liquid-if}}
     {{/each}}
   </div>
 </div>

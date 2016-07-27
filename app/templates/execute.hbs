@@ -1,15 +1,15 @@
 <div class="container">
   <h2>Execute</h2>
 
-  <div class="task-cards-execute">
+  <div>
     {{#each model as |task|}}
       {{#liquid-if (await task.readyToExecute) class="task-animation"}}
         {{#unless task.completed}}
           {{#if task.hasAfters}}
-            <div class="card-stack well"></div>
-            <div class="card-stack well"></div>
-            <div class="card-stack well"></div>
-            <div class="card-stack well"></div>
+            <div class="shadow-stack well"></div>
+            <div class="shadow-stack well"></div>
+            <div class="shadow-stack well"></div>
+            <div class="shadow-stack well"></div>
           {{/if}}
         {{/unless}}
         <div class="task-card well">

@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('plan');
   this.route('execute');
   this.route('review');
+  this.route('login');
 });
 
 export default Router;

@@ -25,6 +25,12 @@ export default function(){
 
   this.transition(
     this.fromRoute('review'),
+    this.use('toLeft'),
+    this.reverse('toRight')
+  );
+
+  this.transition(
+    this.fromRoute('login'),
     this.use('toRight'),
     this.reverse('toLeft')
   );

@@ -21,6 +21,13 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.APP.API_HOST = 'http://localhost:8000';
+    ENV['ember-simple-auth'] = {
+      authorizer: 'authorizer:token'
+    };
+    ENV['ember-simple-auth-token'] = {
+      serverTokenEndpoint: 'http://localhost:8000/api/token-auth/',
+      authorizationPrefix: 'Token '
+    };
   }
 
   if (environment === 'test') {

@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  session: Ember.inject.service('session'),
+
   beforeModel () {
-    this.transitionTo('brainstorm');
+    if (this.get('session').get('isAuthenticated')) {
+      this.transitionTo('brainstorm');
+    } else {
+      this.transitionTo('login');
+    }
   }
 });

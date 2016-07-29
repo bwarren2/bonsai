@@ -1,3 +1,23 @@
+$green: #00ff00;
+$pale-green: #80ff80;
+$yellow: #cccc00;
+$pale-yellow: #ffffcc;
+$red: #ff0000;
+$pale-red: #ff8080;
+
+@mixin box-shadow() {
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
 html {
   min-height: 100%;
   position: relative;
@@ -56,9 +76,7 @@ body {
 }
 
 .task-card {
-  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  @include box-shadow();
 
   &.completed {
     text-decoration: line-through;
@@ -85,9 +103,7 @@ body {
 }
 
 .shadow-stack {
-  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
-  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.33);
+  @include box-shadow();
   margin-bottom: -35px;
   margin-left: auto;
   margin-right: auto;
@@ -106,5 +122,31 @@ body {
 
   &:nth-child(4) {
     width: 98%;
+  }
+}
+
+.countdown-area {
+  @include border-radius(10px);
+
+  border: 2px solid black;
+  font-size: xx-large;
+  padding: 0.3em;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+
+  &.short {
+    background-color: $pale-green;
+    border-color: $green;
+  }
+
+  &.medium {
+    background-color: $pale-yellow;
+    border-color: $yellow;
+  }
+
+  &.long {
+    background-color: $pale-red;
+    border-color: $red;
   }
 }

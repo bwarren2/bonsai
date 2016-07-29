@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  showTimer: false,
+  runningTask: null,
+
   sortedFilteredModel: Ember.computed('model.@each.refined', function () {
     return this.get('model').sortBy('created:desc').filter((task) => {
       return !task.get('refined');
@@ -16,24 +19,27 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    do: function (task) {
+    do (task) {
+      this.set('showTimer', true);
+      this.set('runningTask', task);
+      // Delegate further activity to the countdown-timer component.
+    },
+
+    timerDone () {
+      // Pick up activity from the countdown-timer component.
+      const task = this.get('runningTask');
+      this.set('showTimer', false);
       task.set('refined', true);
       task.save();
     },
 
-    defer: function (task) {
+    defer (task) {
       task.set('refined', true);
       task.save();
     },
 
-    delegate: function (task) {
-      task.set('refined', true);
-      task.save();
-    },
-
-    destroy: function (task) {
-      task.set('refined', true);
-      task.save();
+    destroy (task) {
+      task.destroyRecord();
     }
   }
 });

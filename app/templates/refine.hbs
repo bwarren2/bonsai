@@ -1,20 +1,21 @@
 <div class="container">
   <h2>Refine</h2>
 
+  {{#if showTimer}}
+    {{countdown-timer duration=300 timerDone=(action 'timerDone')}}
+  {{/if}}
+
   <div class="action-area well">
     {{#if activeTask}}
       <div class="task-card well">
         <div class="actions btn-group">
-          <button class="btn btn-default" {{action 'do' activeTask}} aria-label="do">
+          <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
             do
           </button>
-          <button class="btn btn-default" {{action 'defer' activeTask}} aria-label="defer">
+          <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
             defer
           </button>
-          <button class="btn btn-default" {{action 'delegate' activeTask}} aria-label="delegate">
-            delegate
-          </button>
-          <button class="btn btn-default" {{action 'destroy' activeTask}} aria-label="destroy">
+          <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
             destroy
           </button>
         </div>

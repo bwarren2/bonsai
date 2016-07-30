@@ -2,7 +2,7 @@
   <h2>Refine</h2>
 
   {{#if showTimer}}
-    {{countdown-timer duration=300 timerDone=(action 'timerDone')}}
+    {{countdown-timer duration=300 timerDone=(action 'timerDone') task=activeTask}}
   {{/if}}
 
   <div class="action-area well">

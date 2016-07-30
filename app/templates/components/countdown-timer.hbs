@@ -1,1 +1,16 @@
-<div class="countdown-area"></div>
+<div class="countdown-area alert alert-success">
+  <div class="timer-area"></div>
+  <div class="text-center">
+    <div class="btn-group">
+      <button class="btn btn-default" disabled={{usedUpAddAMinute}} {{action 'addMinute' task}} aria-label="addMinute">
+        just a minute&hellip;
+      </button>
+      <button class="btn btn-default" {{action 'done' task}} aria-label="done">
+        done!
+      </button>
+      <button class="btn btn-default" {{action 'defer' task}} aria-label="defer">
+        this is gonna take a while
+      </button>
+    </div>
+  </div>
+</div>

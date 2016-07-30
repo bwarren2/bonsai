@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   showTimer: false,
+  stalledTask: false,
   runningTask: null,
 
   sortedFilteredModel: Ember.computed('model.@each.refined', function () {
@@ -25,12 +26,12 @@ export default Ember.Controller.extend({
       // Delegate further activity to the countdown-timer component.
     },
 
-    timerDone () {
-      // Pick up activity from the countdown-timer component.
-      const task = this.get('runningTask');
-      this.set('showTimer', false);
-      task.set('refined', true);
-      task.save();
+    timerDone (stalled) {
+      if (stalled) {
+        this.set('stalledTask', true);
+      } else {
+        this.set('showTimer', false);
+      }
     },
 
     defer (task) {

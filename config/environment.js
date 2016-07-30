@@ -16,18 +16,19 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    'ember-simple-auth': {
+      authorizer: 'authorizer:token'
+    },
+
+    'ember-simple-auth-token': {
+      authorizationPrefix: 'Token '
     }
   };
 
   if (environment === 'development') {
     ENV.APP.API_HOST = 'http://localhost:8000';
-    ENV['ember-simple-auth'] = {
-      authorizer: 'authorizer:token'
-    };
-    ENV['ember-simple-auth-token'] = {
-      serverTokenEndpoint: 'http://localhost:8000/api/token-auth/',
-      authorizationPrefix: 'Token '
-    };
   }
 
   if (environment === 'test') {
@@ -43,8 +44,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.API_HOST = 'https://some-heroku-app.herokuapp.com';
+    ENV.APP.API_HOST = 'https://guarded-hamlet-24304.herokuapp.com';
   }
+
+  ENV['ember-simple-auth-token']['serverTokenEndpoint'] = `${ENV.APP.API_HOST}/api/token-auth/`;
 
   return ENV;
 };

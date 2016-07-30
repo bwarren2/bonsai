@@ -25,8 +25,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/dagre/dist/dagre.core.min.js');
   app.import(app.bowerDirectory + '/cytoscape-dagre/cytoscape-dagre.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
-  app.import(app.bowerDirectory + '/bootsketch/build/css/bootsketch.css');
 
+  app.import('vendor/bootsketch/bootsketch.css');
   app.import('vendor/cytoscape-edgehandles/cytoscape-edgehandles.js');
 
   return app.toTree();

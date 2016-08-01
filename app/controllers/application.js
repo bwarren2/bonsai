@@ -26,6 +26,10 @@ export default Ember.Controller.extend(EKMixin, {
     this.set('helpShowing', false);
   },
 
+  nextMode: Ember.on(keyDown('cmd+Enter'), function () {
+    // TODO go to next
+  }),
+
   actions: {
     invalidateSession() {
       this.get('session').invalidate();

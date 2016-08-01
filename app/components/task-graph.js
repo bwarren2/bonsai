@@ -160,6 +160,7 @@ export default Ember.Component.extend({
             comp.sendAction('addAfter', sourceNodeId, targetNodeId);
           }
         });
+        cy.reset();
       });
     });
   }

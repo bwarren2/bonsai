@@ -21,6 +21,10 @@ body {
   margin-bottom: 60px;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .navbar-brand > img {
   display: inline-block;
   margin-top: -15px;
@@ -42,6 +46,10 @@ body {
       margin: 20px 0;
     }
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .cy-frame {

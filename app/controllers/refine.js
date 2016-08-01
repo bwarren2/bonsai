@@ -41,6 +41,19 @@ export default Ember.Controller.extend({
 
     destroy (task) {
       task.destroyRecord();
+    },
+
+    saveDetails () {
+      const task = this.get('activeTask');
+      if (Boolean(task)) {
+        task.save();
+      }
+    },
+
+    makeActive (task) {
+      if (!Boolean(this.get('runningTask'))) {
+        this.set("activeTask", task);
+      }
     }
   }
 });

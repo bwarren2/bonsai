@@ -7,7 +7,6 @@ export default Ember.Controller.extend(EKMixin, {
   helpShowing: false,
 
   activateKeyboard: Ember.on('init', function () {
-    console.log('activating keyboard');
     this.set('keyboardActivated', true);
   }),
 

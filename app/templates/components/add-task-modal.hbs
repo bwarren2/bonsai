@@ -1,0 +1,16 @@
+{{#bs-modal title="Add task" open=open body=false footer=false}}
+  {{#bs-modal-body}}
+    {{#bs-form action=(action "addTask") model=this}}
+      {{bs-form-element controlType="text" property="newTaskTitle" placeholder="Task..." autofocus=true}}
+    {{/bs-form}}
+  {{/bs-modal-body}}
+  {{bs-modal-footer closeTitle="cancel" submitTitle="add"}}
+{{/bs-modal}}
+
+{{#ember-wormhole to="footer"}}
+  <div class="add-task-modal">
+    <button class="btn btn-default" {{action "showModal"}}>
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+  </div>
+{{/ember-wormhole}}

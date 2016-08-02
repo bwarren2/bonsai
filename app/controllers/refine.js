@@ -8,9 +8,9 @@ export default Ember.Controller.extend({
   stalledTask: false,
   runningTask: null,
 
-  sortedFilteredModel: Ember.computed('model.@each.refined', function () {
+  sortedFilteredModel: Ember.computed('model.@each.readyForRefine', function () {
     return this.get('model').sortBy('created:desc').filter((task) => {
-      return !task.get('refined');
+      return task.get('readyForRefine');
     });
   }),
 

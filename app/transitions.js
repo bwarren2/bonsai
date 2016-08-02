@@ -36,6 +36,12 @@ export default function(){
   );
 
   this.transition(
+    this.toRoute('me'),
+    this.use('fade', { duration: 500 }),
+    this.reverse('fade', { duration: 500 })
+  );
+
+  this.transition(
     this.hasClass('task-animation'),
     this.use('fade', { duration: 500 }),
     this.reverse('fade', { duration: 500 })

@@ -36,6 +36,12 @@
           <li>
             <a href="https://blog.taskbonsai.com">blog</a>
           </li>
+          {{#active-link}}
+            {{#link-to 'me'}}
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              <span class="sr-only">account</span>
+            {{/link-to}}
+          {{/active-link}}
           <li>
             <button class="btn btn-default navbar-btn" {{action 'invalidateSession'}}>logout</button>
           </li>

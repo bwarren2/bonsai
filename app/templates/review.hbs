@@ -4,13 +4,20 @@
   <div>
     {{#each model as |task|}}
       {{#if task.completed}}
-        <div class="task-card well">
+        <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
           <div class="actions btn-group">
             <button class="btn btn-default" {{action 'reject' task}} aria-label="reject">
               reject
             </button>
           </div>
           {{task.title}}
+          {{#if task.focused}}
+            <div>
+              <small>
+                {{task.details}}
+              </small>
+            </div>
+          {{/if}}
         </div>
       {{/if}}
     {{/each}}

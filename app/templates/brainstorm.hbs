@@ -16,7 +16,7 @@
   <div class="row messy-stack">
     {{#each sortedModel as |task index|}}
       {{#unless task.refined}}
-        <div class="task-card well col-md-6 col-md-offset-3" style="z-index: {{math 1000 "-" index}}">
+        <div class="task-card well clickable col-md-6 col-md-offset-3" style="z-index: {{math 1000 "-" index}}" {{action "refineWith" task}}>
           {{task.title}}
         </div>
       {{/unless}}

@@ -12,13 +12,20 @@
             <div class="shadow-stack well"></div>
           {{/if}}
         {{/unless}}
-        <div class="task-card well">
+        <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
           <div class="actions btn-group">
             <button class="btn btn-default" disabled={{task.completed}} {{action 'complete' task}} aria-label="complete">
               complete
             </button>
           </div>
           {{task.title}}
+          {{#if task.focused}}
+            <div>
+              <small>
+                {{task.details}}
+              </small>
+            </div>
+          {{/if}}
         </div>
       {{/liquid-if}}
     {{/each}}

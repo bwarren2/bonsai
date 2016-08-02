@@ -5,6 +5,11 @@ export default Ember.Controller.extend({
     complete (task) {
       task.set('completed', true);
       task.save();
+    },
+
+    focusTask (task) {
+      const focused = task.get('focused');
+      task.set('focused', !focused);
     }
   }
 });

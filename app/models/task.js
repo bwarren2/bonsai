@@ -29,6 +29,10 @@ export default Model.extend({
     return !this.get('refined') && !this.get('completed');
   }),
 
+  readyForRefine: Ember.computed('refined', 'completed', function () {
+    return !this.get('refined') && !this.get('completed');
+  }),
+
   readyToExecute: Ember.computed('completed', 'befores.@each.completed', function () {
     return this.get('befores').then((befores) => {
       const ret = befores.filter(

@@ -87,7 +87,7 @@ export default Ember.Component.extend({
       }).then((hash) => {
         const { nodes, edges } = hash;
         // cytoscape comes from bower installs, so is globally available.
-        const cy = cytoscape({
+        const cy = this.cy = cytoscape({
           container: element,
           elements: [
             ...nodes,
@@ -163,5 +163,13 @@ export default Ember.Component.extend({
         cy.reset();
       });
     });
+  },
+
+  actions: {
+    resetPanZoom () {
+      if (Boolean(this.cy)) {
+        this.cy.reset();
+      }
+    }
   }
 });

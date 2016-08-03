@@ -160,15 +160,37 @@ export default Ember.Component.extend({
             comp.sendAction('addAfter', sourceNodeId, targetNodeId);
           }
         });
-        cy.reset();
+        cy.pan({
+          x: 50,
+          y: 50
+        });
+        cy.zoom(1);
       });
     });
   },
 
   actions: {
+    zoomIn () {
+      if (Boolean(this.cy)) {
+        const zoom = this.cy.zoom() + 0.2;
+        this.cy.zoom(zoom);
+      }
+    },
+
+    zoomOut () {
+      if (Boolean(this.cy)) {
+        const zoom = this.cy.zoom() - 0.2;
+        this.cy.zoom(zoom);
+      }
+    },
+
     resetPanZoom () {
       if (Boolean(this.cy)) {
-        this.cy.reset();
+        this.cy.pan({
+          x: 50,
+          y: 50
+        });
+        this.cy.zoom(1);
       }
     }
   }

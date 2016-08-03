@@ -4,4 +4,8 @@
   {{/unless}}
   <div class="cy"></div>
 </div>
-<button class="btn btn-default pull-right" {{action "resetPanZoom"}}>reset pan and zoom</button>
+<div class="btn-group pull-right">
+  <button class="btn btn-default" {{action "zoomIn"}}>+</button>
+  <button class="btn btn-default" {{action "zoomOut"}}>-</button>
+  <button class="btn btn-default" {{action "resetPanZoom"}}>reset pan and zoom</button>
+</div>

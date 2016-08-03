@@ -6,6 +6,11 @@ const { RSVP } = Ember;
 
 export default Ember.Component.extend({
   graphReady: false,
+  zoomLevel: 1,
+  panPosition: {
+    x: 50,
+    y: 50
+  },
 
   /*
    * Returns a promise of [ [ from, to ], ... ]
@@ -79,6 +84,10 @@ export default Ember.Component.extend({
               id: task.get('id'),
               title: task.get('title')
             },
+            point: {
+              x: task.get('x') || 0,
+              y: task.get('y') || 0
+            },
             classes: task.get('completed') ? 'complete' : ''
           })
         );
@@ -129,16 +138,28 @@ export default Ember.Component.extend({
             }
           ],
 
+          autoungrabify: true,
+
           layout: {
             name: 'dagre'
           }
         });
-        cy.on('tap', (evt) => {
-          if (evt.cyTarget && evt.cyTarget.id().startsWith('edge-')) {
-            const sourceNodeId = evt.cyTarget.data().source;
-            const targetNodeId = evt.cyTarget.data().target;
-            comp.sendAction('removeAfter', sourceNodeId, targetNodeId);
-          }
+        cy.on('tap', 'edge', (evt) => {
+          const sourceNodeId = evt.cyTarget.data().source;
+          const targetNodeId = evt.cyTarget.data().target;
+          comp.sendAction('removeAfter', sourceNodeId, targetNodeId);
+        });
+        // TODO: this is moot because autoungrabify: true.
+        cy.on('free', 'node', (evt) => {
+          const nodeId = evt.cyTarget.id();
+          const { x, y } = evt.cyTarget.point();
+          // TODO set x, y somehow?
+        });
+        cy.on('pan', () => {
+          this.set('panPosition', cy.pan());
+        });
+        cy.on('zoom', () => {
+          this.set('zoomLevel', cy.zoom());
         });
         cy.edgehandles({
           toggleOffOnLeave: true,
@@ -160,11 +181,8 @@ export default Ember.Component.extend({
             comp.sendAction('addAfter', sourceNodeId, targetNodeId);
           }
         });
-        cy.pan({
-          x: 50,
-          y: 50
-        });
-        cy.zoom(1);
+        cy.pan(this.get('panPosition'));
+        cy.zoom(this.get('zoomLevel'));
       });
     });
   },

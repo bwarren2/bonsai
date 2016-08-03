@@ -45,6 +45,9 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.API_HOST = 'https://guarded-hamlet-24304.herokuapp.com';
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-81856824-1'
+    };
   }
 
   ENV['ember-simple-auth-token']['serverTokenEndpoint'] = `${ENV.APP.API_HOST}/api/token-auth/`;

@@ -18,3 +18,5 @@ testem.log
 
 # Env variables
 .env
+
+*.sublime-*

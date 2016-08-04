@@ -1,17 +1,15 @@
 <div class="container">
-  <h2>Plan</h2>
-
-  {{task-graph data=taskGraphData addAfter=(action "addAfter") removeAfter=(action "removeAfter")}}
-
-  <div class="help-text">
-    <p>
-      <small>Scroll up or down to zoom in or out. Click and drag the background to pan.</small>
-    </p>
-    <p>
-      <small>Click and drag from one task to another to make dependencies.
-        Click a dependency to remove it.</small>
+  <div class="jumbotron">
+    <h2 class="text-center">Plan</h2>
+    <p class="text-center">
+      <small>If one thing depends on another before you can do it, map that out
+        here. It'll help you later on!</small>
     </p>
   </div>
+
+  {{#if taskGraphData}}
+    {{task-graph data=taskGraphData addAfter=(action "addAfter") removeAfter=(action "removeAfter")}}
+  {{/if}}
 </div>
 
 {{add-task-modal store=store}}

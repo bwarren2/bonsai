@@ -1,12 +1,17 @@
 <div class="container">
-  <h2>Refine</h2>
+  <div class="jumbotron">
+    <h2 class="text-center">Refine</h2>
+    <p class="text-center">
+      <small>Clarify and organize what you have to do. If it's quick, do it now.</small>
+    </p>
+  </div>
 
   {{#if showTimer}}
     {{countdown-timer duration=300 timerDone=(action 'timerDone') task=activeTask}}
   {{/if}}
 
-  <div class="action-area well">
-    {{#if activeTask}}
+  {{#if activeTask}}
+    <div class="action-area well">
       <div class="task-card well">
         <div class="actions btn-group">
           <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
@@ -22,8 +27,8 @@
         {{activeTask.title}}
         {{textarea value=activeTask.details class="form-control" rows=3 placeholder="Details..." focus-out="saveDetails"}}
       </div>
-    {{/if}}
-  </div>
+    </div>
+  {{/if}}
 
   <div class="row messy-stack">
     {{#each inactiveTasks as |task index|}}

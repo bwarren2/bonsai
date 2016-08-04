@@ -4,6 +4,8 @@ import config from '../config/environment';
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
 
+  changePasswordCollapsed: true,
+
   successMessage: false,
   errors: null,
 
@@ -12,6 +14,11 @@ export default Ember.Controller.extend({
   new_password2: null,
 
   actions: {
+    toggleShowChangePassword () {
+      const changePasswordCollapsed = this.get('changePasswordCollapsed');
+      this.set('changePasswordCollapsed', !changePasswordCollapsed);
+    },
+
     updatePassword () {
       const old_password = this.get('old_password');
       const new_password1 = this.get('new_password1');

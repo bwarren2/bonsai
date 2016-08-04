@@ -21,9 +21,10 @@ module.exports = function(deployTarget) {
     sentry: {
       publicUrl: 'https://alpha.taskbonsai.com',
       sentryUrl: 'https://c668761c1ea342e79cd15133f7433b69@app.getsentry.com/90249',
+      sentryUrl: 'https://app.getsentry.com/api/0/projects/task-bonsai/task-bonsai-frontend/releases/',
       sentryOrganizationSlug: 'task-bonsai',
       sentryProjectSlug: 'task-bonsai-frontend',
-      sentryApiKey: 'c668761c1ea342e79cd15133f7433b69'
+      sentryApiKey: process.env.SENTRY_API_KEY
     }
   };
 

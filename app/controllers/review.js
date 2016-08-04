@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     reject (task) {
-      task.complete();
+      task.uncomplete();
     },
 
     focusTask (task) {

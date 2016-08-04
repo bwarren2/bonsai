@@ -22,13 +22,15 @@ export default Model.extend({
 
   hasAfters: Ember.computed.notEmpty('afters'),
 
-  inBrainstorm: Ember.computed('refined', 'isCompleted', function () {
-    return !this.get('refined') && !this.get('isCompleted');
-  }),
   isCompleted: Ember.computed('completed_at', function () {
     return this.get('completed_at') !== null;
   }),
+
   notCompleted: Ember.computed.not('isCompleted'),
+
+  inBrainstorm: Ember.computed('refined', 'isCompleted', function () {
+    return !this.get('refined') && !this.get('isCompleted');
+  }),
 
   readyForRefine: Ember.computed('refined', 'isCompleted', function () {
     return !this.get('refined') && !this.get('isCompleted');
@@ -98,8 +100,14 @@ export default Model.extend({
       this.save();
     });
   },
+
   complete () {
     this.set('completed_at', new Date());
+    this.save();
+  },
+
+  uncomplete () {
+    this.set('completed_at', null);
     this.save();
   }
 });

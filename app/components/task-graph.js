@@ -149,12 +149,6 @@ export default Ember.Component.extend({
           const targetNodeId = evt.cyTarget.data().target;
           comp.sendAction('removeAfter', sourceNodeId, targetNodeId);
         });
-        // TODO: this is moot because autoungrabify: true.
-        cy.on('free', 'node', (evt) => {
-          const nodeId = evt.cyTarget.id();
-          const { x, y } = evt.cyTarget.point();
-          // TODO set x, y somehow?
-        });
         cy.on('pan', () => {
           this.set('panPosition', cy.pan());
         });

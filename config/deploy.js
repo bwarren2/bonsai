@@ -16,6 +16,14 @@ module.exports = function(deployTarget) {
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       bucket: 'task-bonsai',
       region: 'us-east-1'
+    },
+
+    sentry: {
+      publicUrl: 'https://alpha.taskbonsai.com',
+      sentryUrl: 'https://c668761c1ea342e79cd15133f7433b69@app.getsentry.com/90249',
+      sentryOrganizationSlug: 'task-bonsai',
+      sentryProjectSlug: 'task-bonsai-frontend',
+      sentryApiKey: 'c668761c1ea342e79cd15133f7433b69'
     }
   };
 

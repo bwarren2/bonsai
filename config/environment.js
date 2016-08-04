@@ -24,6 +24,11 @@ module.exports = function(environment) {
 
     'ember-simple-auth-token': {
       authorizationPrefix: 'Token '
+    },
+
+    sentry: {
+      dsn: 'https://c668761c1ea342e79cd15133f7433b69@app.getsentry.com/90249',
+      development: false
     }
   };
 

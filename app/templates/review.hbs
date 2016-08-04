@@ -17,10 +17,9 @@
           </div>
           {{task.title}}
           {{#if task.focused}}
+            <hr>
             <div>
-              <small>
-                {{task.details}}
-              </small>
+              {{markdown-to-html task.details}}
             </div>
           {{/if}}
         </div>

@@ -9,7 +9,7 @@
   <div>
     {{#each model as |task|}}
       {{#liquid-if (await task.readyToExecute) class="task-animation"}}
-        {{#unless task.completed}}
+        {{#unless task.isCompleted}}
           {{#if task.hasAfters}}
             <div class="shadow-stack well"></div>
             <div class="shadow-stack well"></div>

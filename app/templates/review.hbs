@@ -8,7 +8,7 @@
 
   <div>
     {{#each model as |task|}}
-      {{#if task.completed}}
+      {{#if task.isCompleted}}
         <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
           <div class="actions btn-group">
             <button class="btn btn-default" {{action 'reject' task}} aria-label="reject">

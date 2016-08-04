@@ -76,7 +76,7 @@ export default Ember.Component.extend({
 
     done () {
       const task = this.get('task');
-      task.set('completed', true);
+      task.complete();
       task.set('refined', true);
       task.save();
       this.finishTimer(false);

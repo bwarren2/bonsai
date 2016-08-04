@@ -10,10 +10,8 @@ export default Model.extend({
       return new Date();
     }
   }),
+  completed_at: attr('date'),
   refined: attr('boolean', {
-    defaultValue: false
-  }),
-  completed: attr('boolean', {
     defaultValue: false
   }),
   details: attr('string', { defaultValue: "" }),
@@ -21,24 +19,27 @@ export default Model.extend({
   afters: hasMany('task', { inverse: 'befores' }),
 
   // Goofy, but enables templates to correctly render boolean HTML attributes:
-  notCompleted: Ember.computed.not('completed'),
 
   hasAfters: Ember.computed.notEmpty('afters'),
 
-  inBrainstorm: Ember.computed('refined', 'completed', function () {
-    return !this.get('refined') && !this.get('completed');
+  inBrainstorm: Ember.computed('refined', 'isCompleted', function () {
+    return !this.get('refined') && !this.get('isCompleted');
+  }),
+  isCompleted: Ember.computed('completed_at', function () {
+    return this.get('completed_at') !== null;
+  }),
+  notCompleted: Ember.computed.not('isCompleted'),
+
+  readyForRefine: Ember.computed('refined', 'isCompleted', function () {
+    return !this.get('refined') && !this.get('isCompleted');
   }),
 
-  readyForRefine: Ember.computed('refined', 'completed', function () {
-    return !this.get('refined') && !this.get('completed');
-  }),
-
-  readyToExecute: Ember.computed('completed', 'befores.@each.completed', function () {
+  readyToExecute: Ember.computed('isCompleted', 'befores.@each.isCompleted', function () {
     return this.get('befores').then((befores) => {
       const ret = befores.filter(
-        (before) => !before.get('completed')
+        (before) => !before.get('isCompleted')
       ).length === 0;
-      return ret && !this.get('completed');
+      return ret && !this.get('isCompleted');
     });
   }),
 
@@ -96,5 +97,9 @@ export default Model.extend({
       this.get('afters').removeObjects(afters);
       this.save();
     });
+  },
+  complete () {
+    this.set('completed_at', new Date());
+    this.save();
   }
 });

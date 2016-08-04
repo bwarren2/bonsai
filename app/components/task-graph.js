@@ -88,7 +88,7 @@ export default Ember.Component.extend({
               x: task.get('x') || 0,
               y: task.get('y') || 0
             },
-            classes: task.get('completed') ? 'complete' : ''
+            classes: task.get('isCompleted') ? 'complete' : ''
           })
         );
         const edges = _.flatten(resolvedEdges);

@@ -11,6 +11,7 @@
     "cytoscape": "^2.7.5",
     "dagre": "^0.7.4",
     "bootsketch": "^1.0.1",
-    "raven-js": "~2.2"
+    "raven-js": "~2.2",
+    "showdown": "^1.4.2"
   }
 }

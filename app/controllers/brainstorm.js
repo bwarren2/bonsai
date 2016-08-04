@@ -13,14 +13,6 @@ export default Ember.Controller.extend({
       if (Boolean(title)) {
         this.store.createRecord('task', { title }).save();
       }
-    },
-
-    refineWith (task) {
-      this.transitionToRoute('refine', {
-        queryParams: {
-          task: task.get('id')
-        }
-      });
     }
   }
 });

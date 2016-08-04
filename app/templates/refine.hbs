@@ -30,14 +30,14 @@
     </div>
   {{/if}}
 
-  <div class="row messy-stack">
-    {{#each inactiveTasks as |task index|}}
-      {{#if task.readyForRefine}}
-        <div class="task-card well clickable col-md-6 col-md-offset-3" style="z-index: {{math 1000 "-" index}}" {{action "makeActive" task on="click"}}>
+  <div class="row">
+    <div class="messy-stack col-md-6 col-md-offset-3">
+      {{#each inactiveTasks as |task index|}}
+        <div class="task-card well clickable" style="z-index: {{math 1000 "-" index}}" {{action "makeActive" task on="click"}}>
           {{task.title}}
         </div>
-      {{/if}}
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </div>
 

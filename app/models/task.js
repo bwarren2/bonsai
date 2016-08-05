@@ -18,7 +18,9 @@ export default Model.extend({
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
 
-  // Goofy, but enables templates to correctly render boolean HTML attributes:
+  // For task-graph position:
+  graph_x: attr('number'),
+  graph_y: attr('number'),
 
   hasAfters: Ember.computed.notEmpty('afters'),
 

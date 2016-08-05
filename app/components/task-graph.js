@@ -84,9 +84,9 @@ export default Ember.Component.extend({
               id: task.get('id'),
               title: task.get('title')
             },
-            point: {
-              x: task.get('x') || 0,
-              y: task.get('y') || 0
+            position: {
+              x: task.get('graph_x'),
+              y: task.get('graph_y')
             },
             classes: task.get('isCompleted') ? 'complete' : ''
           })
@@ -95,6 +95,7 @@ export default Ember.Component.extend({
         return { nodes, edges };
       }).then((hash) => {
         const { nodes, edges } = hash;
+
         // cytoscape comes from bower installs, so is globally available.
         const cy = this.cy = cytoscape({
           container: element,
@@ -138,16 +139,17 @@ export default Ember.Component.extend({
             }
           ],
 
-          autoungrabify: true,
-
-          layout: {
-            name: 'dagre'
-          }
+          layout: { name: 'preset' }
         });
+
+        // Events:
         cy.on('tap', 'edge', (evt) => {
           const sourceNodeId = evt.cyTarget.data().source;
           const targetNodeId = evt.cyTarget.data().target;
           comp.sendAction('removeAfter', sourceNodeId, targetNodeId);
+        });
+        cy.on('free', 'node', (evt) => {
+          this.saveNodePosition(evt.cyTarget);
         });
         cy.on('pan', () => {
           this.set('panPosition', cy.pan());
@@ -181,7 +183,34 @@ export default Ember.Component.extend({
     });
   },
 
+  saveNodePosition (node) {
+    const nodeId = node.id();
+    const { x, y } = node.point();
+    const task = this.get('data').find(
+      (elem) => elem.get('id') === nodeId
+    );
+    task.setProperties({
+      graph_x: x,
+      graph_y: y
+    });
+    task.save();
+  },
+
+  doLayout (name) {
+    this.cy.layout({ name });
+    // Save new layout:
+    this.cy.nodes().forEach((node) => {
+      this.saveNodePosition(node);
+    });
+  },
+
   actions: {
+    cleanUp () {
+      if (Boolean(this.cy)) {
+        this.doLayout('dagre');
+      }
+    },
+
     zoomIn () {
       if (Boolean(this.cy)) {
         const zoom = this.cy.zoom() + 0.2;

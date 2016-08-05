@@ -9,7 +9,6 @@ export default Ember.Component.extend({
   }),
 
   startTimer () {
-    console.debug('startTimer');
     const containingElement = this.$(this.get('element')).children('.countdown-area');
     const element = containingElement.children('.timer-area');
     let duration = moment.duration(0, 'seconds');

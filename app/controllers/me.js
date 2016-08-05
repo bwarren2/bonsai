@@ -42,7 +42,6 @@ export default Ember.Controller.extend({
             }
           }).then(
             () => {
-              console.log('successfully set password');
               this.set('successMessage', true);
               this.set('errors', null);
               this.set('old_password', null);
@@ -50,7 +49,6 @@ export default Ember.Controller.extend({
               this.set('new_password2', null);
             },
             (errors) => {
-              console.log('error setting password');
               this.set('errors', errors.responseJSON);
               this.set('successMessage', false);
             }

@@ -27,13 +27,13 @@ module.exports = function(environment) {
     },
 
     sentry: {
-      dsn: 'https://c668761c1ea342e79cd15133f7433b69@app.getsentry.com/90249',
-      development: false
+      dsn: 'https://c668761c1ea342e79cd15133f7433b69@app.getsentry.com/90249'
     }
   };
 
   if (environment === 'development') {
     ENV.APP.API_HOST = 'http://localhost:8000';
+    ENV.sentry.development = true;
   }
 
   if (environment === 'test') {
@@ -46,6 +46,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.sentry.development = true;
   }
 
   if (environment === 'production') {

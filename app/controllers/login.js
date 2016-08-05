@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
   actions: {
     authenticate() {
       let credentials = this.getProperties('identification', 'password');
+      credentials.identification = credentials.identification.toLowerCase();
+
       this.get('session').authenticate('authenticator:token', credentials).catch((error) => {
         this.set('errorMessage', error);
       });

@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="messy-stack col-md-6 col-md-offset-3">
+    {{#each sortedModel as |task index|}}
+      {{#if task.inBrainstorm}}
+        <div class="task-card well" style="z-index: {{math 1000 "-" index}}">
+          {{task.title}}
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</div>

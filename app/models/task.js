@@ -11,6 +11,7 @@ export default Model.extend({
     }
   }),
   completed_at: attr('date'),
+  approved_at: attr('date'),
   refined: attr('boolean', {
     defaultValue: false
   }),
@@ -26,6 +27,9 @@ export default Model.extend({
 
   isCompleted: Ember.computed('completed_at', function () {
     return this.get('completed_at') !== null;
+  }),
+  isReviewable: Ember.computed('completed_at', 'approved_at', function () {
+    return this.get('completed_at') !== null && this.get('approved_at') == null;
   }),
 
   notCompleted: Ember.computed.not('isCompleted'),
@@ -110,6 +114,11 @@ export default Model.extend({
 
   uncomplete () {
     this.set('completed_at', null);
+    this.save();
+  },
+
+  approve () {
+    this.set('approved_at', new Date());
     this.save();
   }
 });

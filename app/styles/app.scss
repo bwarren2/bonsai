@@ -13,6 +13,17 @@
 
 $messy-pile-offset: 0.5em;
 
+// Fix for modal backdrop:
+.modal-backdrop.fade {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.modal-backdrop.fade.in {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
 html {
   min-height: 100%;
   position: relative;

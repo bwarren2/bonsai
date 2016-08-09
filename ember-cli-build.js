@@ -27,6 +27,21 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + '/dagre/dist/dagre.core.min.js');
   app.import(app.bowerDirectory + '/cytoscape-dagre/cytoscape-dagre.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
+  app.import(app.bowerDirectory + '/bootstrap/dist/fonts/glyphicons-halflings-regular.eot', {
+    destDir: '/assets/bootstrap'
+  });
+  app.import(app.bowerDirectory + '/bootstrap/dist/fonts/glyphicons-halflings-regular.svg', {
+    destDir: '/assets/bootstrap'
+  });
+  app.import(app.bowerDirectory + '/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf', {
+    destDir: '/assets/bootstrap'
+  });
+  app.import(app.bowerDirectory + '/bootstrap/dist/fonts/glyphicons-halflings-regular.woff', {
+    destDir: '/assets/bootstrap'
+  });
+  app.import(app.bowerDirectory + '/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', {
+    destDir: '/assets/bootstrap'
+  });
 
   app.import('vendor/bootsketch/bootsketch.css');
   app.import('vendor/cytoscape-edgehandles/cytoscape-edgehandles.js');

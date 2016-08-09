@@ -1,26 +1,26 @@
 import Ember from 'ember';
+import _ from 'lodash/lodash';
 import { datestring } from 'bonsai/helpers/datestring';
 
 export default Ember.Controller.extend({
-  countData: Ember.computed('model.@each.completed_at', function(){
-    var min_date = new Date();
+  countData: Ember.computed('model.@each.completed_at', function () {
+    const min_date = new Date();
     min_date.setDate(min_date.getDate() - 14);
-    var counts = _.countBy(
-      this.get('model').filter(function(d){
-        return d.get('completed_at')!==null && d.get('completed_at')>=min_date;
-      }).map( function(d){
+    const counts = _.countBy(
+      this.get('model').filter((d) => {
+        return d.get('completed_at') !== null && d.get('completed_at') >= min_date;
+      }).map((d) => {
         return datestring([d.get('completed_at')]);
       })
     );
-    var keys = Object.keys(counts);
-    var data = keys.map(function(key){
+    return Object.keys(counts).map((key) => {
       return {
-        label:key,
-        value:counts[key],
-      }
-    })
-    return data;
+        label: key,
+        value: counts[key],
+      };
+    });
   }),
+
   actions: {
     reject (task) {
       task.uncomplete();

@@ -1,20 +1,19 @@
 import Ember from 'ember';
 
-export function datestring(params/*, hash*/) {
-  var today = params[0];
-  var week = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-  var day  = week[today.getDay()];
-  var dd   = today.getDate();
-  var mm   = today.getMonth()+1; //January is 0!
-  var yyyy = today.getFullYear();
-  var hour = today.getHours();
-  var minu = today.getMinutes();
+export function datestring(params) {
+  const today = params[0];
+  let dd = today.getDate();
+  let mm = today.getMonth() + 1; //January is 0!
+  const yyyy = today.getFullYear();
 
-  if(dd<10)  { dd='0'+dd }
-  if(mm<10)  { mm='0'+mm }
-  if(minu<10){ minu='0'+minu }
+  if (dd<10) {
+    dd = '0' + dd;
+  }
+  if (mm<10) {
+    mm = '0' + mm;
+  }
 
-  return yyyy+'-'+mm+'-'+dd;
+  return `${yyyy}-${mm}-${dd}`;
 }
 
 export default Ember.Helper.helper(datestring);

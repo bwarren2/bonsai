@@ -55,7 +55,7 @@
 {{keyboard-help open=helpShowing}}
 
 {{#if session.isAuthenticated}}
-  {{deck-picker data=model.decks store=store activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+  {{deck-picker data=decks store=store activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/if}}
 
 {{liquid-outlet}}

@@ -21,8 +21,6 @@ export default Ember.Component.extend({
         const deck = this.get('store').createRecord('deck', { title });
         deck.save();
         this.set('activeDeck', deck);
-        const showAddDeck = this.get('showAddDeck');
-        this.set('showAddDeck', !showAddDeck);
       }
     }
   }

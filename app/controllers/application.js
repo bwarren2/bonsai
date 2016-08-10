@@ -7,15 +7,21 @@ export default Ember.Controller.extend(EKMixin, {
   helpShowing: false,
   activeDeck: null,
 
-  tasks: Ember.computed('model.tasks.[]', 'model.decks.[]', 'activeDeck', function () {
-    const activeDeck = this.get('activeDeck');
-    if (activeDeck) {
-      return this.get('model.tasks').filter((task) => {
-        return task.get('deck.id') === activeDeck.get('id');
-      });
+  tasks: Ember.computed(
+    'model.tasks.[]',
+    'model.decks.[]',
+    'model.tasks.@each.deck',
+    'activeDeck',
+    function () {
+      const activeDeck = this.get('activeDeck');
+      if (activeDeck) {
+        return this.get('model.tasks').filter((task) => {
+          return task.get('deck.id') === activeDeck.get('id');
+        });
+      }
+      return this.get('model.tasks');
     }
-    return this.get('model.tasks');
-  }),
+  ),
 
   activateKeyboard: Ember.on('init', function () {
     this.set('keyboardActivated', true);

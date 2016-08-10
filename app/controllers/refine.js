@@ -67,6 +67,11 @@ export default Ember.Controller.extend(FilteredTasks, {
         this.set("activeTask", task);
         this.set('task', null);
       }
+    },
+
+    changeDeck (task, deck) {
+      task.set('deck', deck);
+      task.save();
     }
   }
 });

@@ -3,10 +3,18 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   model () {
-    return Ember.RSVP.hash({
-      currentUser: this.get('session').get('currentUser'),
-      decks: this.store.findAll('deck'),
-      tasks: this.store.findAll('task')
-    });
+    if (this.get('session.isAuthenticated')) {
+      return Ember.RSVP.hash({
+        currentUser: this.get('session.currentUser'),
+        decks: this.store.findAll('deck'),
+        tasks: this.store.findAll('task')
+      });
+    } else {
+      return Ember.RSVP.hash({
+        currentUser: null,
+        decks: [],
+        tasks: []
+      });
+    }
   }
 });

@@ -39,11 +39,24 @@ textarea {
 }
 
 .tab-list {
+  background-color: white;
+  border: 1px solid #999;
+  border-radius: 5px;
   margin-left: -0.3em;
   overflow: hidden;
   position: fixed;
   width: 7em;
   z-index: 1010;
+  transition: width 0.5s, height 0.5s;
+
+  &.add-deck {
+    width: 15em;
+  }
+
+  form {
+    margin: 0.5em;
+    margin-left: 0.8em;
+  }
 
   button {
     text-align: left;

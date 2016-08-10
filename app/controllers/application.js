@@ -7,7 +7,7 @@ export default Ember.Controller.extend(EKMixin, {
   helpShowing: false,
   activeDeck: null,
 
-  tasks: Ember.computed('model.tasks', 'activeDeck', function () {
+  tasks: Ember.computed('model.tasks.[]', 'model.decks.[]', 'activeDeck', function () {
     const activeDeck = this.get('activeDeck');
     if (activeDeck) {
       return this.get('model.tasks').filter((task) => {

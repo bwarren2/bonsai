@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
       const new_password2 = this.get('new_password2');
       const host = config.APP.API_HOST;
       const namespace = config.APP.API_NAMESPACE;
-      const user_id = this.get('model').get('id');
+      const user_id = this.get('model.currentUser.id');
       const set_password_url = `${host}/${namespace}/users/${user_id}/set_password/`;
       this.get('session').authorize('authorizer:token',
         (headerName, headerValue) => {

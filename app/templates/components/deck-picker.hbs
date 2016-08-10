@@ -1,0 +1,6 @@
+<div class="tab-list btn-group-vertical">
+  <button class="btn btn-default {{active-deck null activeDeck}}" {{action "setActiveDeck" null}}>All</button>
+  {{#each data as |deck|}}
+    <button class="btn btn-default {{active-deck deck activeDeck}}" {{action "setActiveDeck" deck}}>{{deck.title}}</button>
+  {{/each}}
+</div>

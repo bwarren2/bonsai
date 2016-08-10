@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(FilteredTasks, {
   actions: {
     complete (task) {
       task.complete();

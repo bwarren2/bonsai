@@ -5,6 +5,17 @@ import { keyDown } from 'ember-keyboard';
 export default Ember.Controller.extend(EKMixin, {
   session: Ember.inject.service('session'),
   helpShowing: false,
+  activeDeck: null,
+
+  tasks: Ember.computed('model.tasks', 'activeDeck', function () {
+    const activeDeck = this.get('activeDeck');
+    if (activeDeck) {
+      return this.get('model.tasks').filter((task) => {
+        return task.get('deck.id') === activeDeck.get('id');
+      });
+    }
+    return this.get('model.tasks');
+  }),
 
   activateKeyboard: Ember.on('init', function () {
     this.set('keyboardActivated', true);
@@ -33,6 +44,10 @@ export default Ember.Controller.extend(EKMixin, {
   actions: {
     invalidateSession() {
       this.get('session').invalidate();
+    },
+
+    setActiveDeck (deck) {
+      this.set('activeDeck', deck);
     }
   }
 });

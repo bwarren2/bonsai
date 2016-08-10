@@ -1,32 +1,33 @@
 import Ember from 'ember';
+import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(FilteredTasks, {
   showTimer: false,
   stalledTask: false,
   runningTask: null,
 
-  sortedFilteredModel: Ember.computed('model.@each.readyForRefine', function () {
-    return this.get('model').sortBy('created_at:desc').filter((task) => {
+  sortedFilteredTasks: Ember.computed('filteredTasks.@each.readyForRefine', function () {
+    return this.get('filteredTasks').sortBy('created_at:desc').filter((task) => {
       return task.get('readyForRefine');
     });
   }),
 
-  activeTask: Ember.computed('sortedFilteredModel', function () {
-    return this.get('sortedFilteredModel')[0];
+  activeTask: Ember.computed('sortedFilteredTasks', function () {
+    return this.get('sortedFilteredTasks')[0];
   }),
 
-  inactiveTasks: Ember.computed('sortedFilteredModel', 'activeTask', function () {
-    const models = this.get('sortedFilteredModel');
-    const activeTask = this.get('activeTask');
-    let idx = models.findIndex((elem) => elem.get('id') === activeTask.get('id'));
+  inactiveTasks: Ember.computed('sortedFilteredTasks', 'activeTask', function () {
+    const tasks = this.get('sortedFilteredTasks');
+    const activeTaskId = this.get('activeTask.id');
+    let idx = tasks.findIndex((elem) => elem.get('id') === activeTaskId);
     if (idx < 0) {
       idx = 0;
-      const newActiveTask = this.get('sortedFilteredModel')[0];
+      const newActiveTask = this.get('sortedFilteredTasks')[0];
       this.set('activeTask', newActiveTask);
     }
     return [
-      ...models.slice(0, idx),
-      ...models.slice(idx + 1)
+      ...tasks.slice(0, idx),
+      ...tasks.slice(idx + 1)
     ];
   }),
 

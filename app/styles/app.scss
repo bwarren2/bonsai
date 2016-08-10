@@ -38,6 +38,18 @@ textarea {
   resize: vertical;
 }
 
+.tab-list {
+  margin-left: -0.3em;
+  overflow: hidden;
+  position: fixed;
+  width: 7em;
+  z-index: 1010;
+
+  button {
+    text-align: left;
+  }
+}
+
 .navbar-brand > img {
   display: inline-block;
   margin-top: -15px;

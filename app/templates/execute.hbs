@@ -7,7 +7,7 @@
   </div>
 
   <div>
-    {{#each model as |task|}}
+    {{#each filteredTasks as |task|}}
       {{#liquid-if (await task.readyToExecute) class="task-animation"}}
         {{#unless task.isCompleted}}
           {{#if task.hasAfters}}

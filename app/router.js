@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('review');
   this.route('login');
   this.route('me');
+  this.route('decklist');
 });
 
 export default Router;

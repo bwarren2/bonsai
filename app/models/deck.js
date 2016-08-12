@@ -11,13 +11,10 @@ export default Model.extend({
     return this.get('deleted_at') == null;
   }),
   delete() {
-    console.log(this.get('title'));
     this.get('task_set').then(function(tasks){
-      console.log(tasks);
       tasks.forEach(function(t){
-        console.log(t.get('title'))
         t.delete();
-      })
+      });
     });
     this.set('deleted_at', new Date());
     this.save();

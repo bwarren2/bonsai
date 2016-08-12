@@ -3,5 +3,6 @@ import attr from 'ember-data/attr';
 
 export default Model.extend({
   username: attr('string'),
-  displayName: attr('string')
+  display_name: attr('string'),
+  enable_keyboard_shortcuts: attr('boolean')
 });

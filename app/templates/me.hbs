@@ -3,11 +3,13 @@
     <h2 class="text-center">{{model.currentUser.username}}</h2>
   </div>
 
+  {{input type="checkbox" name="Enable keyboard shortcuts" checked=model.currentUser.enable_keyboard_shortcuts}}
+
+  <button class="btn btn-default" {{action "toggleShowChangePassword"}}>change password</button>
+
   {{#if successMessage}}
     <div class="alert alert-success" role="alert">You changed your password!</div>
   {{/if}}
-
-  <button class="btn btn-default" {{action "toggleShowChangePassword"}}>change password</button>
 
   {{#bs-collapse collapsed=changePasswordCollapsed}}
     <form {{action "updatePassword" on="submit"}} class="form-horizontal {{if errors 'has-error'}}">

@@ -3,7 +3,12 @@
     <h2 class="text-center">{{model.currentUser.username}}</h2>
   </div>
 
-  {{input type="checkbox" name="Enable keyboard shortcuts" checked=model.currentUser.enable_keyboard_shortcuts}}
+  <div>
+    <label>
+      {{input type="checkbox" name="enable_keyboard_shortcuts" checked=model.currentUser.enable_keyboard_shortcuts}}
+      Enable keyboard shortcuts
+    </label>
+  </div>
 
   <button class="btn btn-default" {{action "toggleShowChangePassword"}}>change password</button>
 

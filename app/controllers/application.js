@@ -7,10 +7,14 @@ export default Ember.Controller.extend(EKMixin, {
   helpShowing: false,
   activeDeck: null,
 
-  activateKeyboard: Ember.on('init', function () {
-    const keyboardActivated = this.get('session.currentUser.enable_keyboard_shortcuts');
-    this.set('keyboardActivated', keyboardActivated);
-  }),
+  activateKeyboard: Ember.on('init', Ember.observer(
+    'session.currentUser.enable_keyboard_shortcuts',
+    function () {
+      const keyboardActivated = this.get('session.currentUser.enable_keyboard_shortcuts');
+      this.set('keyboardActivated', keyboardActivated);
+    }
+  )
+  ),
 
   toggleHelp: Ember.on(keyDown('shift+Slash'), function () {
     if (this.get('helpShowing')) {

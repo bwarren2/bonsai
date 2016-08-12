@@ -13,6 +13,17 @@ export default Ember.Controller.extend({
   new_password1: null,
   new_password2: null,
 
+  watchEnableKeyboardShortcuts: Ember.observer(
+    'model.currentUser.enable_keyboard_shortcuts',
+    function () {
+      const currentUser = this.get('model.currentUser');
+      currentUser.save().then(() => {
+        const session = this.get('session');
+        session.set('currentUser', currentUser);
+      });
+    }
+  ),
+
   actions: {
     toggleShowChangePassword () {
       const changePasswordCollapsed = this.get('changePasswordCollapsed');

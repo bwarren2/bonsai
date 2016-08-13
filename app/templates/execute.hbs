@@ -27,9 +27,9 @@
             <div class="shadow-stack well"></div>
           {{/if}}
         {{/unless}}
-        <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
+        <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
           <div class="actions btn-group">
-            <button class="btn btn-default" disabled={{task.completed}} {{action 'complete' task}} aria-label="complete">
+            <button class="btn btn-default" disabled={{task.isCompleted}} {{action 'complete' task}} aria-label="complete">
               complete
             </button>
           </div>

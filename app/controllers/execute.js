@@ -17,9 +17,7 @@ export default Ember.Controller.extend(FilteredTasks, {
           const completedLength = taskSet.filter(
             (elem) => elem.get('isCompleted')
           ).length;
-          const value = Math.round((completedLength / totalLength) * 100);
-          console.log(value);
-          return value;
+          return Math.round((completedLength / totalLength) * 100);
         });
       } else {
         const deckTaskLists = this.get('decks').map((deck) => deck.get('task_set'));
@@ -28,9 +26,7 @@ export default Ember.Controller.extend(FilteredTasks, {
           const completedLength = _.sum(taskLists.map(
             (elem) => elem.filter((elem) => elem.get('isCompleted')).length
           ));
-          const value = Math.round((completedLength / totalLength) * 100);
-          console.log(value);
-          return value;
+          return Math.round((completedLength / totalLength) * 100);
         });
       }
     }
@@ -38,7 +34,11 @@ export default Ember.Controller.extend(FilteredTasks, {
 
   actions: {
     complete (task) {
-      task.complete();
+      task.set('pendingCompletion', true);
+      // Run later to allow animation to complete.
+      Ember.run.later(this, () => {
+        task.complete();
+      }, 500);
     },
 
     focusTask (task) {

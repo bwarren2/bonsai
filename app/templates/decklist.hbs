@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2 class="text-center">Decks</h2>
+    <p class="text-center">
+      <small>Modify your decks here.</small>
+    </p>
+  </div>
+
+  <div>
+    {{#each decks as |deck|}}
+    {{#if deck.isActive}}
+
+      <div class="deck-card well clickable" >
+      <div class='row'>
+        <div class='col-md-6'>
+          <h2 class='editable-deck-title'> {{
+            ember-inline-edit
+            value=deck.title
+            onSave=(action "rename" deck)
+          }}</h2>
+        </div>
+        <div class='col-md-6'>
+          <div class="actions btn-group pull-right">
+            <button class="btn btn-default" aria-label="delete">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {{#each deck.task_set as |task|}}
+        {{#liquid-if (await task.readyToExecute) class="task-animation"}}
+          {{#unless task.isCompleted}}
+            {{#if task.hasAfters}}
+              <div class="shadow-stack well"></div>
+              <div class="shadow-stack well"></div>
+              <div class="shadow-stack well"></div>
+              <div class="shadow-stack well"></div>
+            {{/if}}
+          {{/unless}}
+          <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
+            {{task.title}}
+            {{#if task.focused}}
+              {{#if task.details}}
+                <hr>
+                <div>
+                  {{markdown-to-html task.details}}
+                </div>
+              {{/if}}
+            {{/if}}
+          </div>
+        {{/liquid-if}}
+      {{/each}}
+
+      </div>
+    {{/if}}
+    {{/each}}
+  </div>
+</div>
+
+{{add-task-modal store=store}}

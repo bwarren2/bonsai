@@ -10,6 +10,7 @@ export default Model.extend({
       return new Date();
     }
   }),
+  deleted_at: attr('date'),
   completed_at: attr('date'),
   approved_at: attr('date'),
   refined: attr('boolean', {
@@ -26,11 +27,15 @@ export default Model.extend({
 
   hasAfters: Ember.computed.notEmpty('afters'),
 
-  isCompleted: Ember.computed('completed_at', function () {
-    return this.get('completed_at') !== null;
+  isCompleted: Ember.computed('completed_at', 'deleted_at', function () {
+    return this.get('completed_at') !== null & this.get('deleted_at') == null;
   }),
-  isReviewable: Ember.computed('completed_at', 'approved_at', function () {
-    return this.get('completed_at') !== null && this.get('approved_at') == null;
+  isReviewable: Ember.computed('completed_at', 'approved_at', 'deleted_at', function () {
+    return
+      this.get('completed_at') !== null &&
+      this.get('approved_at') == null &&
+      this.get('deleted_at') == null
+      ;
   }),
 
   notCompleted: Ember.computed.not('isCompleted'),
@@ -120,6 +125,11 @@ export default Model.extend({
 
   approve () {
     this.set('approved_at', new Date());
+    this.save();
+  },
+
+  delete () {
+    this.set('deleted_at', new Date());
     this.save();
   }
 });

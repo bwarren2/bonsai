@@ -5,7 +5,12 @@ export default Ember.Mixin.create({
     if (this.get('session.isAuthenticated')) {
       return Ember.RSVP.hash({
         currentUser: this.get('session.currentUser'),
-        decks: this.store.findAll('deck'),
+        decks: this.store.query('deck',
+        'person', {
+          filter: {
+            deleted_at: null
+          }
+        }),
         tasks: this.store.findAll('task')
       });
     } else {

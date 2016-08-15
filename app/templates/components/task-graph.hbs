@@ -1,22 +1,27 @@
+<div class="task-graph-controls btn-group pull-right">
+  <button class="btn btn-default" {{action "cleanUp"}}>clean up</button>
+  <button class="btn btn-default" {{action "zoomIn"}}>+</button>
+  <button class="btn btn-default" {{action "zoomOut"}}>-</button>
+  <button class="btn btn-default" {{action "resetPanZoom"}}>reset pan and zoom</button>
+</div>
 <div class="cy-frame well">
   {{#unless graphReady}}
     <img src="/images/loading.gif" alt="loading" class="center-block" />
   {{/unless}}
   <div class="cy"></div>
 </div>
-<div class="btn-group pull-right">
-  <button class="btn btn-default" {{action "cleanUp"}}>clean up</button>
-  <button class="btn btn-default" {{action "zoomIn"}}>+</button>
-  <button class="btn btn-default" {{action "zoomOut"}}>-</button>
-  <button class="btn btn-default" {{action "resetPanZoom"}}>reset pan and zoom</button>
-</div>
 
 <div class="help-text">
   <p>
-    <small>Scroll up or down to zoom in or out. Click and drag the background to pan.</small>
+    <small>
+      Scroll up or down to zoom in or out. Click and drag the background to pan.
+    </small>
   </p>
   <p>
-    <small>Click and drag from one task to another to make dependencies.
-      Click a dependency to remove it.</small>
+    <small>
+      Click and drag a task to move it.
+      Click and drag from the red dot in one task onto another task to make dependencies.
+      Click a dependency to remove it.
+    </small>
   </p>
 </div>

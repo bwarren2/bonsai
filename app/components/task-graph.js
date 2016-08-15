@@ -159,7 +159,7 @@ export default Ember.Component.extend({
         });
         cy.edgehandles({
           toggleOffOnLeave: true,
-          handleSize: 30,
+          handleSize: 15,
           handleColor: 'rgba(255, 0, 0, 0.3)',
           hoverDelay: 0,
 

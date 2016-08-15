@@ -13,14 +13,25 @@ export default Ember.Controller.extend({
   new_password1: null,
   new_password2: null,
 
-  watchEnableKeyboardShortcuts: Ember.observer(
-    'model.currentUser.enable_keyboard_shortcuts',
+  watchShowHelp: Ember.observer(
+    'session.currentUser.show_help',
     function () {
-      const currentUser = this.get('model.currentUser');
-      currentUser.save().then(() => {
-        const session = this.get('session');
-        session.set('currentUser', currentUser);
-      });
+      const currentUser = this.get('session.currentUser');
+      this.store.findRecord(
+        'user',
+        currentUser.get('id')
+      ).then((user) => user.save());
+    }
+  ),
+
+  watchEnableKeyboardShortcuts: Ember.observer(
+    'session.currentUser.enable_keyboard_shortcuts',
+    function () {
+      const currentUser = this.get('session.currentUser');
+      this.store.findRecord(
+        'user',
+        currentUser.get('id')
+      ).then((user) => user.save());
     }
   ),
 
@@ -36,7 +47,7 @@ export default Ember.Controller.extend({
       const new_password2 = this.get('new_password2');
       const host = config.APP.API_HOST;
       const namespace = config.APP.API_NAMESPACE;
-      const user_id = this.get('model.currentUser.id');
+      const user_id = this.get('session.currentUser.id');
       const set_password_url = `${host}/${namespace}/users/${user_id}/set_password/`;
       this.get('session').authorize('authorizer:token',
         (headerName, headerValue) => {

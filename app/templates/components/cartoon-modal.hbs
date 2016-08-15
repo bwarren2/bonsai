@@ -1,0 +1,14 @@
+{{#bs-modal id='comic' title="Intro" open=open body=false footer=false}}
+  {{#bs-modal-body}}
+    <img class="img-responsive cartoon" src="{{cartoon-select kind=kind}}">
+  {{/bs-modal-body}}
+  {{bs-modal-footer closeTitle="Dismiss"}}
+{{/bs-modal}}
+
+{{#ember-wormhole to="footer"}}
+  <div class="cartoon-modal">
+    <button class="btn btn-default" {{action "showModal"}}>
+      <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+    </button>
+  </div>
+{{/ember-wormhole}}

@@ -3,7 +3,8 @@ import { EKMixin } from 'ember-keyboard';
 import { keyDown } from 'ember-keyboard';
 
 export default Ember.Controller.extend(EKMixin, {
-  session: Ember.inject.service('session'),
+  session: Ember.inject.service(),
+
   helpShowing: false,
   activeDeck: null,
 

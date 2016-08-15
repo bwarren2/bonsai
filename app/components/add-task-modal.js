@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 
 export default Ember.Component.extend({
+  store: Ember.inject.service(),
+
   open: false,
   newTaskTitle: "",
 
@@ -18,8 +20,7 @@ export default Ember.Component.extend({
       const title = this.get('newTaskTitle');
       this.set('newTaskTitle', '');
       if (Boolean(title)) {
-        const store = this.get('store');
-        store.createRecord('task', { title }).save();
+        this.get('store').createRecord('task', { title }).save();
       }
       this.set('open', false);
     }

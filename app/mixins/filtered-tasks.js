@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
   application: Ember.inject.controller(),
-  session: Ember.inject.service('session'),
+  session: Ember.inject.service(),
 
   activeDeck: Ember.computed.alias('application.activeDeck'),
   tasks: Ember.computed(

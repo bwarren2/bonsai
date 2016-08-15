@@ -1,21 +1,26 @@
 {{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks store=store activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+  {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/ember-wormhole}}
 
 <div class="container">
-  <div class="jumbotron">
-    <h2 class="text-center">Braindump</h2>
-    <p class="text-center">
+  {{#if session.currentUser.show_help}}
+    <div class="jumbotron">
+      <h2 class="text-center">Braindump</h2>
+      <p class="text-center">
       <small>Just put everything you have to do here, and we'll help you get it done.</small>
-    </p>
+      </p>
+      {{cartoon-modal kind="brainstorm"}}
+    </div>
+  {{/if}}
 
-    <form {{action "addTask" on="submit"}} class="form-horizontal">
-      <div class="form-group">
-        {{focus-input value=newTaskTitle class="form-control" placeholder='Task...'}}
-      </div>
-      <button type="submit" class="btn btn-default center-block">add it</button>
-    </form>
-  </div>
+  <form {{action "addTask" on="submit"}} class="form-horizontal">
+    <div class="form-group">
+      {{focus-input value=newTaskTitle class="form-control" placeholder='Task...'}}
+    </div>
+    <button type="submit" class="btn btn-default center-block">add it</button>
+  </form>
+
+  <hr>
 
   {{messy-pile tasks=filteredTasks}}
 </div>

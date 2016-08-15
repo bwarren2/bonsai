@@ -1,14 +1,17 @@
 {{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks store=store activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+  {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/ember-wormhole}}
 
 <div class="container">
-  <div class="jumbotron">
-    <h2 class="text-center">Review</h2>
-    <p class="text-center">
+  {{#if session.currentUser.show_help}}
+    <div class="jumbotron">
+      <h2 class="text-center">Review</h2>
+      <p class="text-center">
       <small>Have you gotten done what you wanted to get done? Congratulations!</small>
-    </p>
-  </div>
+      </p>
+      {{cartoon-modal kind="review"}}
+    </div>
+  {{/if}}
 
   <div>
     {{#each filteredTasks as |task|}}
@@ -44,4 +47,4 @@
   </div>
 </div>
 
-{{add-task-modal store=store}}
+{{add-task-modal}}

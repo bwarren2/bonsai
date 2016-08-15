@@ -1,19 +1,24 @@
 {{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks store=store activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+  {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/ember-wormhole}}
 
 <div class="container">
-  <div class="jumbotron">
-    <h2 class="text-center">Plan</h2>
-    <p class="text-center">
-      <small>If one thing depends on another before you can do it, map that out
-        here. It'll help you later on!</small>
-    </p>
-  </div>
+  {{#if session.currentUser.show_help}}
+    <div class="jumbotron">
+      <h2 class="text-center">Plan</h2>
+      <p class="text-center">
+      <small>
+        If one thing depends on another before you can do it, map that out
+        here. It'll help you later on!
+      </small>
+      </p>
+      {{cartoon-modal kind="plan"}}
+    </div>
+  {{/if}}
 
   {{#if taskGraphData}}
     {{task-graph data=taskGraphData addAfter=(action "addAfter") removeAfter=(action "removeAfter")}}
   {{/if}}
 </div>
 
-{{add-task-modal store=store}}
+{{add-task-modal}}

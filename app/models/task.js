@@ -30,15 +30,15 @@ export default Model.extend({
   isCompleted: Ember.computed('completed_at', 'deleted_at', function () {
     return this.get('completed_at') !== null & this.get('deleted_at') == null;
   }),
+  notCompleted: Ember.computed.not('isCompleted'),
+
   isReviewable: Ember.computed('completed_at', 'approved_at', 'deleted_at', function () {
-    return
+    return (
       this.get('completed_at') !== null &&
       this.get('approved_at') == null &&
       this.get('deleted_at') == null
-      ;
+    );
   }),
-
-  notCompleted: Ember.computed.not('isCompleted'),
 
   inBrainstorm: Ember.computed('refined', 'isCompleted', function () {
     return !this.get('refined') && !this.get('isCompleted');

@@ -3,7 +3,7 @@ import Ember from 'ember';
 export function cartoonSelect(params, namedArgs/*, hash*/) {
   var kind = namedArgs['kind'];
   if (kind==='brainstorm') {
-    return "http://imgs.xkcd.com/comics/typical_morning_routine.png";
+    return "https://imgs.xkcd.com/comics/business_idea.png";
   } else if(kind==='refine'){
     return "https://imgs.xkcd.com/comics/is_it_worth_the_time.png";
   } else if(kind==='plan'){

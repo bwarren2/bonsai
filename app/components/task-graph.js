@@ -55,8 +55,7 @@ export default Ember.Component.extend({
 
   renderGraph () {
     this.set('graphReady', true);
-    // Super-brittle, related to task-graph.hbs:
-    const element = this.$(this.get('element')).children().children('.cy');
+    const element = this.$().find('.cy');
     element.addClass('activated');
 
     // Used in edgehandle callbacks below:
@@ -156,6 +155,13 @@ export default Ember.Component.extend({
         });
         cy.on('zoom', () => {
           this.set('zoomLevel', cy.zoom());
+        });
+        cy.on('mouseover', 'node', (evt) => {
+          const task = this.get('data').find((task) => task.get('id') === evt.cyTarget.id());
+          this.$().find('#task-details').html(task.get('details'));
+        });
+        cy.on('mouseout', 'node', () => {
+          this.$().find('#task-details').html('');
         });
         cy.edgehandles({
           toggleOffOnLeave: true,

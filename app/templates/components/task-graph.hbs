@@ -1,8 +1,14 @@
-<div class="task-graph-controls btn-group pull-right">
-  <button class="btn btn-default" {{action "cleanUp"}}>clean up</button>
-  <button class="btn btn-default" {{action "zoomIn"}}>+</button>
-  <button class="btn btn-default" {{action "zoomOut"}}>-</button>
-  <button class="btn btn-default" {{action "resetPanZoom"}}>reset pan and zoom</button>
+<div class="row">
+  <div id="task-details" class="col-md-6">
+  </div>
+  <div class="col-md-6">
+    <div class="task-graph-controls btn-group pull-right">
+      <button class="btn btn-default" {{action "cleanUp"}}>clean up</button>
+      <button class="btn btn-default" {{action "zoomIn"}}>+</button>
+      <button class="btn btn-default" {{action "zoomOut"}}>-</button>
+      <button class="btn btn-default" {{action "resetPanZoom"}}>reset pan and zoom</button>
+    </div>
+  </div>
 </div>
 <div class="cy-frame well">
   {{#unless graphReady}}

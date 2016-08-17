@@ -5,11 +5,13 @@
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  <div class="progress">
-    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{await percentCompleted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{await percentCompleted}}%;">
-      <span class="sr-only">{{await percentCompleted}}% Complete</span>
+  {{#if (await percentCompleted)}}
+    <div class="progress">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{await percentCompleted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{await percentCompleted}}%;">
+        <span class="sr-only">{{await percentCompleted}}% Complete</span>
+      </div>
     </div>
-  </div>
+  {{/if}}
 
   <div>
     {{#each filteredTasks as |task|}}

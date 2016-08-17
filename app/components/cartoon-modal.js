@@ -4,25 +4,24 @@ export default Ember.Component.extend({
   session: Ember.inject.service(),
   store: Ember.inject.service(),
 
-  height: 0,
-  marginTopOffset: 0,
+  setMarginTop: Ember.on(
+    'didRender',
+    Ember.observer(
+      'help',
+      function () {
+        const height = this.$('.help').height();
+        const marginTopOffset = height - 20;
 
-  onInit: Ember.on('didRender', function () {
-    const height = this.$('.help').height();
-    const marginTopOffset = height - 20;
-
-    this.setProperties({
-      height,
-      marginTopOffset
-    });
-
-    const currentHelp = `show_help_${this.get('kind')}`;
-    const currentUser = this.get('session.currentUser');
-    const currentSetting = currentUser.get(currentHelp);
-    this.$('.help').css({
-      'margin-top': currentSetting ? 0 : -marginTopOffset
-    });
-  }),
+        const currentHelp = `show_help_${this.get('kind')}`;
+        const currentUser = this.get('session.currentUser');
+        const currentSetting = currentUser.get(currentHelp);
+        console.debug('setMarginTop', currentSetting);
+        this.$('.help').css({
+          'margin-top': currentSetting ? 0 : -marginTopOffset
+        });
+      }
+    )
+  ),
 
   actions: {
     toggleHelp () {
@@ -31,10 +30,6 @@ export default Ember.Component.extend({
         const currentHelp = `show_help_${this.get('kind')}`;
         const currentUser = this.get('session.currentUser');
         const currentSetting = currentUser.get(currentHelp);
-        const marginTopOffset = this.get('marginTopOffset');
-        this.$('.help').css({
-          'margin-top': currentSetting ? 0 : -marginTopOffset
-        });
         currentUser.set(currentHelp, !currentSetting);
         this.get('store').findRecord(
           'user',

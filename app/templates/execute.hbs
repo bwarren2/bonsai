@@ -9,7 +9,7 @@
 
   <div>
     {{#each filteredTasks as |task|}}
-      {{#liquid-if (await task.readyToExecute) class="task-animation"}}
+      {{#if (await task.readyToExecute)}}
         {{#unless task.isCompleted}}
           {{#if task.hasAfters}}
             <div class="shadow-stack well"></div>
@@ -34,7 +34,8 @@
             {{/if}}
           {{/if}}
         </div>
-      {{/liquid-if}}
+
+      {{/if}}
     {{/each}}
   </div>
 </div>

@@ -3,15 +3,7 @@
 {{/ember-wormhole}}
 
 <div class="container">
-  {{#if session.currentUser.show_help}}
-    <div class="jumbotron">
-      <h2 class="text-center">Execute</h2>
-      <p class="text-center">
-      <small>Do whatever you can off the top of your list.</small>
-      </p>
-      {{cartoon-modal kind="execute"}}
-    </div>
-  {{/if}}
+  {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
   <div class="progress">
     <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{await percentCompleted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{await percentCompleted}}%;">

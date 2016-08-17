@@ -3,15 +3,7 @@
 {{/ember-wormhole}}
 
 <div class="container">
-  {{#if session.currentUser.show_help}}
-    <div class="jumbotron">
-      <h2 class="text-center">Braindump</h2>
-      <p class="text-center">
-      <small>Just put everything you have to do here, and we'll help you get it done.</small>
-      </p>
-      {{cartoon-modal kind="brainstorm"}}
-    </div>
-  {{/if}}
+  {{cartoon-modal kind="brainstorm" help=session.currentUser.show_help_brainstorm}}
 
   <form {{action "addTask" on="submit"}} class="form-horizontal">
     <div class="form-group">

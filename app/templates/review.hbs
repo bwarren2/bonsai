@@ -3,15 +3,7 @@
 {{/ember-wormhole}}
 
 <div class="container">
-  {{#if session.currentUser.show_help}}
-    <div class="jumbotron">
-      <h2 class="text-center">Review</h2>
-      <p class="text-center">
-      <small>Have you gotten done what you wanted to get done? Congratulations!</small>
-      </p>
-      {{cartoon-modal kind="review"}}
-    </div>
-  {{/if}}
+  {{cartoon-modal kind="review" help=session.currentUser.show_help_review}}
 
   <div>
     {{#each filteredTasks as |task|}}

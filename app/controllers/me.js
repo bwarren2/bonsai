@@ -13,17 +13,6 @@ export default Ember.Controller.extend({
   new_password1: null,
   new_password2: null,
 
-  watchShowHelp: Ember.observer(
-    'session.currentUser.show_help',
-    function () {
-      const currentUser = this.get('session.currentUser');
-      this.store.findRecord(
-        'user',
-        currentUser.get('id')
-      ).then((user) => user.save());
-    }
-  ),
-
   watchEnableKeyboardShortcuts: Ember.observer(
     'session.currentUser.enable_keyboard_shortcuts',
     function () {

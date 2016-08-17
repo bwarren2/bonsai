@@ -40,14 +40,13 @@ textarea {
 
 .tab-list {
   background-color: white;
-  border: 1px solid #999;
   border-radius: 5px;
+  border: 1px solid #999;
   margin-left: -0.3em;
   overflow: hidden;
   position: fixed;
-  width: 7em;
-  z-index: 1010;
   transition: width 0.5s, height 0.5s;
+  width: 7em;
 
   &.add-deck {
     width: 15em;
@@ -61,6 +60,10 @@ textarea {
   button {
     text-align: left;
   }
+}
+
+.navbar {
+  margin-bottom: 0px;
 }
 
 .navbar-brand > img {
@@ -88,6 +91,19 @@ textarea {
 
 .clickable {
   cursor: pointer;
+}
+
+.jumbotron.help {
+  transition: margin-top 0.5s;
+
+  .reveal-help {
+    margin: -20px -60px -48px -60px;
+    padding-top: 20px;
+  }
+}
+
+.pull-tab {
+  margin-top: -30px;
 }
 
 .cy-frame {

@@ -3,15 +3,7 @@
 {{/ember-wormhole}}
 
 <div class="container">
-  {{#if session.currentUser.show_help}}
-    <div class="jumbotron">
-      <h2 class="text-center">Refine</h2>
-      <p class="text-center">
-        <small>Clarify and organize what you have to do. If it's quick, do it now.</small>
-      </p>
-      {{cartoon-modal kind="refine"}}
-    </div>
-  {{/if}}
+  {{cartoon-modal kind="refine" help=session.currentUser.show_help_refine}}
 
   {{#if showTimer}}
     {{countdown-timer duration=300 timerDone=(action 'timerDone') task=activeTask}}

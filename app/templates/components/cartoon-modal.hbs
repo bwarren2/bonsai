@@ -1,5 +1,16 @@
-<div class="clearfix">
-  <img class="img-responsive center-block" src="{{cartoon-select kind=kind}}">
-
-  <button class="hide-help btn btn-default pull-right" {{action "closeHelp"}}>never show this help</button>
+<div class="jumbotron help">
+  <div class="clearfix">
+    <img
+       class="img-responsive center-block clickable"
+       src="{{cartoon-select kind=kind}}"
+       {{action "toggleHelp"}}>
+  </div>
+  <h2 class="text-center">{{get-cartoon-help-title kind}}</h2>
+  <p class="text-center">
+  <small>{{get-cartoon-help kind}}</small>
+  </p>
+  <div class="reveal-help clickable" {{action "toggleHelp"}}></div>
+</div>
+<div class="pull-tab">
+  <img class="center-block clickable" {{action "toggleHelp"}} src="/images/pull-tab.png">
 </div>

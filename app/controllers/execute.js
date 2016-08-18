@@ -1,39 +1,38 @@
-// from d3 import 'd3';
 import Ember from 'ember';
 import FilteredTasks from '../mixins/filtered-tasks';
 
 export default Ember.Controller.extend(FilteredTasks, {
   actions: {
     complete (task) {
+      const duration = 3000;
       task.set('pendingCompletion', true);
-      var destination = {
-        top:0,
-        left:200,
+      const destination = {
+        bottom: 100,
+        right: 100,
+        width: 100
       };
 
-      var jq_select = Ember.$('div.task-card').filter(function() {
-        return Ember.$(this).data("task-id") == task.get("id");
-      });
-      var width = jq_select.width();
+      const jqSelect = Ember.$('.task-card').filter(
+        () => Ember.$(this).data("task-id") == task.get("id")
+      );
+      const width = jqSelect.width();
 
-      console.log(width);
-      d3.select(jq_select.get(0))
-      .style('position', 'absolute')
-      .style('width', width+"px")
-      .transition()
-      .duration(2000)
-      .style('width', 300+"px")
-      .style('left', destination.left+"px")
-      .style('top', destination.top+"px")
-      .transition()
-      .duration(100000)
+      d3.select(jqSelect.get(0))
+        .style('position', 'absolute')
+        .style('width', `${width}px`)
+        .transition()
+        .duration(2000)
+        .style('width', `${destination.width}px`)
+        .style('right', `${destination.right}px`)
+        .style('bottom', `${destination.bottom}px`)
+        .transition()
+        .duration(duration);
 
       // Run later to allow animation to complete.
-      // this.$("#test").fadeOut("slow");
       Ember.run.later(this, () => {
         task.set('pendingCompletion', false);
         task.complete();
-      }, 10000);
+      }, duration);
     },
 
     focusTask (task) {

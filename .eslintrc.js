@@ -7,6 +7,7 @@ module.exports = {
     "dagre": true,
     "cydagre": true,
     "window": true,
+    "d3": true,
     "-Promise": true
   },
   extends: [

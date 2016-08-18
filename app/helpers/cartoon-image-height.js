@@ -33,11 +33,9 @@ export function cartoonImageHeight(params) {
       style = {};
       break;
   }
-  const ret = Object.keys(style).map(
+  return Object.keys(style).map(
     (key) => `${key}: ${style[key]}px;`
   ).join(' ');
-  console.log(ret);
-  return ret;
 }
 
 export default Ember.Helper.helper(cartoonImageHeight);

@@ -15,7 +15,6 @@ export default Ember.Component.extend({
         const currentHelp = `show_help_${this.get('kind')}`;
         const currentUser = this.get('session.currentUser');
         const currentSetting = currentUser.get(currentHelp);
-        console.debug('setMarginTop', currentSetting);
         this.$('.help').css({
           'margin-top': currentSetting ? 0 : -marginTopOffset
         });

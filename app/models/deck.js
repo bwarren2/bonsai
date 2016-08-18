@@ -18,7 +18,6 @@ export default Model.extend({
     });
     this.set('deleted_at', new Date());
     this.save();
-    console.log(this.get('deleted_at'));
   }
 });
 

@@ -7,24 +7,24 @@ export default Ember.Controller.extend(FilteredTasks, {
       const duration = 3000;
       task.set('pendingCompletion', true);
       const destination = {
-        bottom: 100,
-        right: 100,
-        width: 100
+        // These values seems unreasonably large, but they are affected by the
+        // scaling, so they are reasonable!
+        top: 500,
+        right: -900,
+        scale: 0.1
       };
 
       const jqSelect = Ember.$('.task-card').filter(
-        () => Ember.$(this).data("task-id") == task.get("id")
+        (idx, elem) => Ember.$(elem).data("task-id") == task.get("id")
       );
-      const width = jqSelect.width();
 
       d3.select(jqSelect.get(0))
-        .style('position', 'absolute')
-        .style('width', `${width}px`)
+        .style('position', 'relative')
         .transition()
         .duration(2000)
-        .style('width', `${destination.width}px`)
         .style('right', `${destination.right}px`)
-        .style('bottom', `${destination.bottom}px`)
+        .style('top', `${destination.top}px`)
+        .style('transform', `scale(${destination.scale})`)
         .transition()
         .duration(duration);
 

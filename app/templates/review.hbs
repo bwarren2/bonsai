@@ -10,10 +10,10 @@
       {{#if task.isReviewable}}
         <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
           <div class="actions btn-group">
-            <button class="btn btn-default" {{action 'approve' task}} aria-label="approve">
+            <button class="btn btn-default" {{action 'approve' task bubbles=false}} aria-label="approve">
               approve
             </button>
-            <button class="btn btn-default" {{action 'reject' task}} aria-label="reject">
+            <button class="btn btn-default" {{action 'reject' task bubbles=false}} aria-label="reject">
               reject
             </button>
           </div>

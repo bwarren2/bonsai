@@ -5,13 +5,14 @@
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  {{#if (await percentCompleted)}}
+  <div class="progress-container">
     <div class="progress">
       <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{await percentCompleted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{await percentCompleted}}%;">
         <span class="sr-only">{{await percentCompleted}}% Complete</span>
       </div>
     </div>
-  {{/if}}
+    <canvas widht=300 height=300></canvas>
+  </div>
 
   <div>
     {{#each filteredTasks as |task|}}
@@ -26,7 +27,7 @@
         {{/unless}}
         <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
           <div class="actions btn-group">
-            <button class="btn btn-default" disabled={{task.isCompleted}} {{action 'complete' task}} aria-label="complete">
+            <button class="btn btn-default" disabled={{task.isCompleted}} {{action 'complete' task bubbles=false}} aria-label="complete">
               complete
             </button>
           </div>

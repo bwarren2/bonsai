@@ -5,14 +5,7 @@
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  <div class="progress-container">
-    <div class="progress">
-      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{await percentCompleted}}" aria-valuemin="0" aria-valuemax="100" style="width: {{await percentCompleted}}%;">
-        <span class="sr-only">{{await percentCompleted}}% Complete</span>
-      </div>
-    </div>
-    <canvas widht=300 height=300></canvas>
-  </div>
+  {{progress-bar tasks=filteredTasks}}
 
   <div>
     {{#each filteredTasks as |task|}}

@@ -17,7 +17,7 @@ export default Ember.Controller.extend(FilteredTasks, {
     return Object.keys(counts).map((key) => {
       return {
         label: key,
-        value: counts[key],
+        value: counts[key]
       };
     });
   }),

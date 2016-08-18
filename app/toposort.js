@@ -6,7 +6,7 @@
  * @returns {Array}
  */
 
-export default function(edges){
+export default function (edges) {
   return toposort(uniqueNodes(edges), edges);
 }
 
@@ -40,7 +40,7 @@ function toposort (nodes, edges) {
 
     // outgoing edges
     const outgoing = edges.filter((edge) => edge[0] === node);
-    if (i = outgoing.length) {
+    if (i == outgoing.length) {
       const preds = predecessors.concat(node);
       do {
         const child = outgoing[--i][1];
@@ -52,7 +52,7 @@ function toposort (nodes, edges) {
   }
 }
 
-function uniqueNodes (arr){
+function uniqueNodes (arr) {
   const res = [];
   for (let i = 0, len = arr.length; i < len; i++) {
     const edge = arr[i];

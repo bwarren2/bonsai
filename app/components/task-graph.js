@@ -36,7 +36,6 @@ export default Ember.Component.extend({
       toposort(graph);
       return false;
     } catch (e) {
-      console.warn('would create cycle', graph, e);
       return true;
     }
   },
@@ -212,27 +211,27 @@ export default Ember.Component.extend({
 
   actions: {
     cleanUp () {
-      if (Boolean(this.cy)) {
+      if (this.cy) {
         this.doLayout('dagre');
       }
     },
 
     zoomIn () {
-      if (Boolean(this.cy)) {
+      if (this.cy) {
         const zoom = this.cy.zoom() + 0.2;
         this.cy.zoom(zoom);
       }
     },
 
     zoomOut () {
-      if (Boolean(this.cy)) {
+      if (this.cy) {
         const zoom = this.cy.zoom() - 0.2;
         this.cy.zoom(zoom);
       }
     },
 
     resetPanZoom () {
-      if (Boolean(this.cy)) {
+      if (this.cy) {
         this.cy.pan({
           x: 50,
           y: 50

@@ -57,13 +57,13 @@ export default Ember.Controller.extend(FilteredTasks, {
 
     saveDetails () {
       const task = this.get('activeTask');
-      if (Boolean(task)) {
+      if (task) {
         task.save();
       }
     },
 
     makeActive (task) {
-      if (!Boolean(this.get('runningTask'))) {
+      if (!this.get('runningTask')) {
         this.set("activeTask", task);
         this.set('task', null);
       }

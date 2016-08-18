@@ -19,7 +19,7 @@ export default Ember.Component.extend({
     addTask () {
       const title = this.get('newTaskTitle');
       this.set('newTaskTitle', '');
-      if (Boolean(title)) {
+      if (title) {
         this.get('store').createRecord('task', { title }).save();
       }
       this.set('open', false);

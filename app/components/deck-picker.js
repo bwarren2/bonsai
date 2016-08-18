@@ -34,7 +34,7 @@ export default Ember.Component.extend({
     addDeck () {
       const title = this.get('deckTitle');
       this.set('deckTitle', '');
-      if (Boolean(title)) {
+      if (title) {
         const deck = this.get('store').createRecord('deck', { title });
         deck.save();
         this.set('activeDeck', deck);

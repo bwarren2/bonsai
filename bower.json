@@ -13,6 +13,7 @@
     "raven-js": "~2.2",
     "showdown": "^1.4.2",
     "lodash": "~3.10.0",
+    "d3": "3.5.17",
     "d4": "https://raw.githubusercontent.com/bwarren2/d4/master/d4.js"
   }
 }

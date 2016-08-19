@@ -18,7 +18,7 @@ export default Ember.Controller.extend(FilteredTasks, {
         (idx, elem) => Ember.$(elem).data("task-id") == task.get("id")
       );
 
-      d3.select(jqSelect.get(0))
+      d4.select(jqSelect.get(0))
         .style('position', 'relative')
         .transition()
         .duration(2000)

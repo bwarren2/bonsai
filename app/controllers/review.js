@@ -4,23 +4,23 @@ import { datestring } from 'bonsai/helpers/datestring';
 import FilteredTasks from '../mixins/filtered-tasks';
 
 export default Ember.Controller.extend(FilteredTasks, {
-  // countData: Ember.computed('filteredTasks.@each.completed_at', function () {
-  //   const min_date = new Date();
-  //   min_date.setDate(min_date.getDate() - 14);
-  //   const counts = _.countBy(
-  //     this.get('filteredTasks').filter((d) => {
-  //       return d.get('completed_at') !== null && d.get('completed_at') >= min_date;
-  //     }).map((d) => {
-  //       return datestring([d.get('completed_at')]);
-  //     })
-  //   );
-  //   return Object.keys(counts).map((key) => {
-  //     return {
-  //       label: key,
-  //       value: counts[key]
-  //     };
-  //   });
-  // }),
+  countData: Ember.computed('filteredTasks.@each.completed_at', function () {
+    const min_date = new Date();
+    min_date.setDate(min_date.getDate() - 14);
+    const counts = _.countBy(
+      this.get('filteredTasks').filter((d) => {
+        return d.get('completed_at') !== null && d.get('completed_at') >= min_date;
+      }).map((d) => {
+        return datestring([d.get('completed_at')]);
+      })
+    );
+    return Object.keys(counts).map((key) => {
+      return {
+        label: key,
+        value: counts[key]
+      };
+    });
+  }),
 
   actions: {
     reject (task) {

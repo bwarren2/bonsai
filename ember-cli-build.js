@@ -47,7 +47,7 @@ module.exports = function(defaults) {
     destDir: '/assets/bootstrap'
   });
 
-  app.import(app.bowerDirectory + '/d4/index.js');
+  app.import(app.bowerDirectory + '/d4/d4.js');
   app.import('vendor/bootsketch/bootsketch.css');
   app.import('vendor/cytoscape-edgehandles/cytoscape-edgehandles.js');
 

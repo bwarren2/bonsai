@@ -48,10 +48,10 @@ function createExplosion(x, y, color) {
 	const minSize = 10;
 	const maxSize = 30;
 	const count = 10;
-	const minSpeed = 60.0;
-	const maxSpeed = 200.0;
-	const minScaleSpeed = 1.0;
-	const maxScaleSpeed = 4.0;
+	const minSpeed = 20.0;
+	const maxSpeed = 50.0;
+	const minScaleSpeed = 0.3;
+	const maxScaleSpeed = 1.1;
 
 	for (let angle = 0; angle < 360; angle += Math.round(360 / count)) {
 		const particle = new Particle();
@@ -89,7 +89,7 @@ export function initializeAnimationLoop(context2D) {
   const frameRate = 60.0;
   const frameDelay = 1000.0 / frameRate;
 
-  setInterval(() => {
+  return setInterval(() => {
     update(context2D, frameDelay);
   }, frameDelay);
 }

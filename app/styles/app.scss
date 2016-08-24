@@ -109,8 +109,22 @@ textarea {
   right: 0px;
 }
 
+.out-box {
+  outline: 1px solid grey;
+  background-color: white;
+  z-index: 10;
+  height: 65px;
+  width: 28px;
+  position: fixed;
+  right: 0;
+}
+
 .clickable {
   cursor: pointer;
+}
+
+.progress-bar {
+  transition: none;
 }
 
 .jumbotron.help {
@@ -157,7 +171,7 @@ textarea {
 
   &.completed {
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   &.focused {

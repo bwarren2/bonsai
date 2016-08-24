@@ -2,10 +2,15 @@
   {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/ember-wormhole}}
 
+{{#ember-wormhole to="out-box"}}
+  <div class="out-box">
+  </div>
+{{/ember-wormhole}}
+
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  {{progress-bar tasks=filteredTasks}}
+  {{progress-bar tasks=filteredTasks actionReceiver=progressBar animationDuration=animationDuration}}
 
   <div>
     {{#each filteredTasks as |task|}}

@@ -12,7 +12,8 @@
     "bootsketch": "^1.0.1",
     "raven-js": "~2.2",
     "showdown": "^1.4.2",
-    "d3": "~3.5.3",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "d3": "3.5.17",
+    "d4": "https://github.com/bwarren2/d4.git"
   }
 }

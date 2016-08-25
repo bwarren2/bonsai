@@ -38,31 +38,6 @@ textarea {
   resize: vertical;
 }
 
-.tab-list {
-  background-color: white;
-  border-radius: 5px;
-  border: 1px solid #999;
-  margin-left: -0.3em;
-  overflow: hidden;
-  position: fixed;
-  transition: width 0.5s, height 0.5s;
-  width: 7em;
-  z-index: 10;
-
-  &.add-deck {
-    width: 15em;
-  }
-
-  form {
-    margin: 0.5em;
-    margin-left: 0.8em;
-  }
-
-  button {
-    text-align: left;
-  }
-}
-
 .navbar {
   margin-bottom: 0px;
 }
@@ -90,8 +65,66 @@ textarea {
   }
 }
 
+.tab-list {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #999;
+  margin-left: -0.3em;
+  overflow: hidden;
+  transition: width 0.5s, height 0.5s;
+  width: 7em;
+
+  &.add-deck {
+    width: 15em;
+  }
+
+  form {
+    margin: 0.5em;
+    margin-left: 0.8em;
+  }
+
+  button {
+    text-align: left;
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 70px;
+  transition: width 0.5s, height 0.5s;
+  min-width: 7em;
+  z-index: 10;
+
+  & > div > .ember-view {
+    // To prevent two elements appearing during the transition.
+    position: absolute;
+  }
+}
+
+#sidebar-left {
+  left: 0px;
+}
+
+#sidebar-right {
+  right: 0px;
+}
+
+.out-box {
+  outline: 1px solid grey;
+  background-color: white;
+  z-index: 10;
+  height: 65px;
+  width: 28px;
+  position: fixed;
+  right: 0;
+}
+
 .clickable {
   cursor: pointer;
+}
+
+.progress-bar {
+  transition: none;
 }
 
 .jumbotron.help {
@@ -138,7 +171,7 @@ textarea {
 
   &.completed {
     text-decoration: line-through;
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   &.focused {

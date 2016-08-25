@@ -13,7 +13,7 @@
   {{cartoon-modal kind="refine" help=session.currentUser.show_help_refine}}
 
   {{#if showTimer}}
-    {{countdown-timer duration=300 timerDone=(action 'timerDone') task=activeTask}}
+    {{countdown-timer duration=300 timerDone=(action 'timerDone') task=activeTask done=(action 'done') defer=(action 'defer')}}
   {{/if}}
 
   {{#if activeTask}}

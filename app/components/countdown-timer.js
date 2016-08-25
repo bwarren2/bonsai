@@ -75,16 +75,13 @@ export default Ember.Component.extend({
 
     done () {
       const task = this.get('task');
-      task.complete();
-      task.set('refined', true);
-      task.save();
+      this.sendAction('done', task);
       this.finishTimer(false);
     },
 
     defer () {
       const task = this.get('task');
-      task.set('refined', true);
-      task.save();
+      this.sendAction('defer', task);
       this.finishTimer(false);
     }
   }

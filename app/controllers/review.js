@@ -4,11 +4,11 @@ import { datestring } from 'bonsai/helpers/datestring';
 import FilteredTasks from '../mixins/filtered-tasks';
 
 export default Ember.Controller.extend(FilteredTasks, {
-  countData: Ember.computed('filteredTasks.@each.completed_at', function () {
+  countData: Ember.computed('completedTasks.@each.completed_at', function () {
     const min_date = new Date();
     min_date.setDate(min_date.getDate() - 14);
     const counts = _.countBy(
-      this.get('filteredTasks').filter((d) => {
+      this.get('completedTasks').filter((d) => {
         return d.get('completed_at') !== null && d.get('completed_at') >= min_date;
       }).map((d) => {
         return datestring([d.get('completed_at')]);

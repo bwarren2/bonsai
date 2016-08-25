@@ -14,10 +14,15 @@ export default Ember.Mixin.create({
       const activeDeck = this.get('activeDeck');
       if (activeDeck) {
         return this.get('model.tasks').filter((task) => {
-          return task.get('deck.id') === activeDeck.get('id');
+          return (
+            task.get('deck.id') === activeDeck.get('id')
+              && task.get("notCompleted")
+          );
         });
       }
-      return this.get('model.tasks');
+      return this.get('model.tasks').filter((task) => {
+        return task.get("notCompleted");
+      });
     }
   ),
   filteredTasks: Ember.computed.alias('tasks'),

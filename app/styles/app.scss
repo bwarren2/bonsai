@@ -110,13 +110,28 @@ textarea {
 }
 
 .out-box {
-  outline: 1px solid grey;
-  background-color: white;
   z-index: 10;
   height: 65px;
   width: 28px;
   position: fixed;
   right: 0;
+
+  img {
+    position: absolute;
+    top: 0;
+  }
+  img:first-child {
+    height: 65px;
+    width: 63px;
+    z-index: 10;
+  }
+  img:nth-child(2) {
+    height: 55px;
+    width: 55px;
+    top: 5px;
+    left: -1px;
+    z-index: 0;
+  }
 }
 
 .clickable {
@@ -171,7 +186,6 @@ textarea {
 
   &.completed {
     text-decoration: line-through;
-    opacity: 0.8;
   }
 
   &.focused {
@@ -183,7 +197,6 @@ textarea {
     position: relative;
     top: -6px;
   }
-
 }
 
 hr {

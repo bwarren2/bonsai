@@ -8,7 +8,7 @@ export default Ember.Controller.extend(FilteredTasks, {
     const duration = 3 * 1000;
     task.set('pendingCompletion', true);
     const destination = {
-      top: 15,
+      top: 17,
       right: 40,
       scale: 0.3
     };

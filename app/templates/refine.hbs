@@ -2,6 +2,13 @@
   {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
 {{/ember-wormhole}}
 
+{{#ember-wormhole to="out-box"}}
+  <div class="out-box">
+    <img src="/images/manilla-folder.png">
+    <img src="/images/manilla-folder.png">
+  </div>
+{{/ember-wormhole}}
+
 <div class="container">
   {{cartoon-modal kind="refine" help=session.currentUser.show_help_refine}}
 

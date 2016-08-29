@@ -6,7 +6,7 @@
   {{cartoon-modal kind="review" help=session.currentUser.show_help_review}}
 
   <div>
-    {{#each filteredTasks as |task|}}
+    {{#each completedTasks as |task|}}
       {{#if task.isReviewable}}
         <div class="task-card well clickable {{if task.focused 'focused'}}" {{action "focusTask" task on="click"}}>
           <div class="actions btn-group">

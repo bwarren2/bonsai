@@ -56,6 +56,11 @@ export default Ember.Controller.extend(EKMixin, {
     }
   }),
 
+  taskModalOpen: false,
+  showAddTaskModal: Ember.on(keyDown('KeyA'), function () {
+    this.set('taskModalOpen', true);
+  }),
+
   showHelp () {
     this.set('helpShowing', true);
   },

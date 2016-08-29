@@ -1,15 +1,19 @@
 <div class="tab-list btn-group-vertical {{if showAddDeck "add-deck"}}">
-  <button class="btn btn-default {{active-deck null activeDeck}}" {{action "setActiveDeck" null}}>All</button>
+  <button
+    class="btn btn-default {{active-deck null activeDeck}}"
+    {{action "setActiveDeck" null}}>
+    All decks
+  </button>
   {{#each data as |deck|}}
     <button class="btn btn-default {{active-deck deck activeDeck}}" {{action "setActiveDeck" deck}}>{{deck.title}}</button>
   {{/each}}
-  <button class="btn btn-default" {{action "toggleAddDeck"}}>add&hellip;</button>
+  <button class="btn btn-default" {{action "toggleAddDeck"}}>add a deck&hellip;</button>
   {{#if showAddDeck}}
     <form {{action "addDeck" on="submit"}} class="clearfix">
       <div class="form-group">
         {{focus-input value=deckTitle placeholder="Deck title..." class="form-control"}}
       </div>
-      <button type="submit" class="btn btn-default pull-right">add&hellip;</button>
+      <button type="submit" class="btn btn-default pull-right">add it!</button>
     </form>
   {{/if}}
 </div>

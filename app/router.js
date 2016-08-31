@@ -17,7 +17,13 @@ Router.map(function() {
   this.route('me');
   this.route('decklist');
   this.route('archive');
-  this.route('splash');
+  this.route('splash', function() {
+    this.route('brainstorm');
+    this.route('refine');
+    this.route('plan');
+    this.route('execute');
+    this.route('review');
+  });
 });
 
 export default Router;

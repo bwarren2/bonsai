@@ -17,7 +17,7 @@ Router.map(function() {
   this.route('me');
   this.route('decklist');
   this.route('archive');
-  this.route('splash', function() {
+  this.route('splash', { path: '/intro' }, function() {
     this.route('brainstorm');
     this.route('refine');
     this.route('plan');

@@ -134,6 +134,10 @@ textarea {
   }
 }
 
+.spacer {
+  margin-top: 20px;
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -303,4 +307,8 @@ hr {
 
 .hide-help {
   margin: 0.5em;
+}
+
+.status {
+  font-size: smaller;
 }

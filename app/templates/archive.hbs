@@ -1,0 +1,40 @@
+{{#ember-wormhole to="deck-picker"}}
+  {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+{{/ember-wormhole}}
+
+<div class="container">
+  <div class="spacer"></div>
+
+  <form {{action "search" on="submit"}} class="form-horizontal">
+    <div class="form-group">
+      {{focus-input value=s class="form-control" placeholder='Seach...'}}
+    </div>
+  </form>
+
+  <hr>
+
+  <div>
+    {{#each tasks as |task|}}
+      <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
+        {{task.title}}
+        <div class="status pull-right">
+          {{#if task.isCompleted}}
+            completed at {{task.completed_at}}
+          {{else}}
+            incomplete
+          {{/if}}
+        </div>
+        {{#if task.focused}}
+          {{#if task.details}}
+            <hr>
+            <div>
+              {{markdown-to-html task.details}}
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{add-task-modal open=application.taskModalOpen}}

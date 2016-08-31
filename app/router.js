@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('login');
   this.route('me');
   this.route('decklist');
+  this.route('archive');
 });
 
 export default Router;

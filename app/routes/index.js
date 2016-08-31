@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     if (this.get('session').get('isAuthenticated')) {
       this.transitionTo('brainstorm');
     } else {
-      this.transitionTo('login');
+      this.transitionTo('splash');
     }
   }
 });

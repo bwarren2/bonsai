@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('me');
   this.route('decklist');
   this.route('archive');
+  this.route('splash');
 });
 
 export default Router;

@@ -1,0 +1,20 @@
+.sidebar {
+  position: fixed;
+  top: 70px;
+  transition: width 0.5s, height 0.5s;
+  min-width: 7em;
+  z-index: 10;
+
+  & > div > .ember-view {
+    // To prevent two elements appearing during the transition.
+    position: absolute;
+  }
+}
+
+#sidebar-left {
+  left: 0px;
+}
+
+#sidebar-right {
+  right: 0px;
+}

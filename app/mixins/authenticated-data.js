@@ -1,24 +1,29 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  model () {
-    if (this.get('session.isAuthenticated')) {
-      return Ember.RSVP.hash({
-        currentUser: this.get('session.currentUser'),
-        decks: this.store.query(
-          'deck',
-          {
-            deleted_at: 'null'
-          }
-        ),
-        tasks: this.store.findAll('task')
-      });
-    } else {
-      return Ember.RSVP.hash({
+  activeDeck: Ember.inject.service(),
+
+  queryParams: {
+    deck: {
+      refreshModel: true
+    }
+  },
+
+  model (params) {
+    const deckParams = {
+      deck: params.deck,
+      deleted_at: 'null'
+    };
+    return Ember.RSVP.hash({
+      currentUser: this.get('session.currentUser'),
+      decks: this.store.query('deck', deckParams),
+      tasks: this.store.findAll('task')
+    }).catch(() => {
+      return Ember.RSVP.has({
         currentUser: null,
         decks: [],
         tasks: []
       });
-    }
+    });
   }
 });

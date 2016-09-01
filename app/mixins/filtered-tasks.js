@@ -4,15 +4,17 @@ export default Ember.Mixin.create({
   application: Ember.inject.controller(),
   activeDeck: Ember.inject.service(),
 
-  deck: Ember.computed.alias('activeDeck.deck'),
+  queryParams: {
+    deck: 'activeDeck.deck'
+  },
 
   filteredTasks: Ember.computed(
     'model.tasks.[]',
     'model.decks.[]',
     'model.tasks.@each.deck',
-    'deck',
+    'activeDeck.deck',
     function () {
-      const deck = this.get('deck');
+      const deck = this.get('activeDeck.deck');
       if (deck) {
         return this.get('model.tasks').filter((task) => {
           return (
@@ -29,9 +31,9 @@ export default Ember.Mixin.create({
     'model.tasks.[]',
     'model.decks.[]',
     'model.tasks.@each.deck',
-    'deck',
+    'activeDeck.deck',
     function () {
-      const deck = this.get('deck');
+      const deck = this.get('activeDeck.deck');
       if (deck) {
         return this.get('model.tasks').filter((task) => {
           return (

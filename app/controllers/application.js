@@ -8,6 +8,7 @@ export default Ember.Controller.extend(EKMixin, {
   showAddTaskModal: Ember.inject.service(),
 
   helpShowing: false,
+  activeDeckId: Ember.computed.alias('activeDeck.deck'),
 
   activateKeyboard: Ember.on('init', Ember.observer(
     'session.currentUser.enable_keyboard_shortcuts',

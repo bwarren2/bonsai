@@ -5,7 +5,8 @@ export default Ember.Mixin.create({
 
   queryParams: {
     deck: {
-      refreshModel: true
+      refreshModel: true,
+      replace: true
     }
   },
 

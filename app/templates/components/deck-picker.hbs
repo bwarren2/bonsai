@@ -1,11 +1,11 @@
 <div class="tab-list btn-group-vertical {{if showAddDeck "add-deck"}}">
   <button
-    class="btn btn-default {{active-deck null activeDeck}}"
+    class="btn btn-default {{if (eq null activeDeck.deck) 'active'}}"
     {{action "setActiveDeck" null}}>
     All decks
   </button>
   {{#each data as |deck|}}
-    <button class="btn btn-default {{active-deck deck activeDeck}}" {{action "setActiveDeck" deck}}>{{deck.title}}</button>
+    <button class="btn btn-default {{if (eq deck.id activeDeck.deck) 'active'}}" {{action "setActiveDeck" deck}}>{{deck.title}}</button>
   {{/each}}
   <button class="btn btn-default" {{action "toggleAddDeck"}}>add a deck&hellip;</button>
   {{#if showAddDeck}}

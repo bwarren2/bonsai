@@ -1,5 +1,5 @@
 {{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks activeDeck=activeDeck setActiveDeck=(action "setActiveDeck")}}
+  {{deck-picker data=decks}}
 {{/ember-wormhole}}
 
 <div class="container">
@@ -39,4 +39,4 @@
   </div>
 </div>
 
-{{add-task-modal open=application.taskModalOpen}}
+{{add-task-modal}}

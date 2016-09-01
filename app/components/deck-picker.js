@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  activeDeck: Ember.inject.service(),
 
   showAddDeck: false,
   deckTitle: '',
@@ -23,7 +24,8 @@ export default Ember.Component.extend({
 
   actions: {
     setActiveDeck (deck) {
-      this.sendAction("setActiveDeck", deck);
+      const deckId = deck ? deck.get('id') : null;
+      this.set('activeDeck.deck', deckId);
     },
 
     toggleAddDeck () {
@@ -35,9 +37,9 @@ export default Ember.Component.extend({
       const title = this.get('deckTitle');
       this.set('deckTitle', '');
       if (title) {
-        const deck = this.get('store').createRecord('deck', { title });
-        deck.save();
-        this.set('activeDeck', deck);
+        this.get('store').createRecord('deck', { title }).save().then((deck) => {
+          this.set('activeDeck.deck', deck.get('id'));
+        });
       }
     }
   }

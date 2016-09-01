@@ -3,6 +3,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   store: Ember.inject.service(),
+  showAddTaskModal: Ember.inject.service(),
+
+  open: Ember.computed.alias('showAddTaskModal.taskModalOpen'),
 
   newTaskTitle: "",
 

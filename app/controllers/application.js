@@ -5,6 +5,7 @@ import { keyDown } from 'ember-keyboard';
 export default Ember.Controller.extend(EKMixin, {
   session: Ember.inject.service(),
   activeDeck: Ember.inject.service(),
+  showAddTaskModal: Ember.inject.service(),
 
   helpShowing: false,
 
@@ -17,7 +18,7 @@ export default Ember.Controller.extend(EKMixin, {
   )
   ),
 
-  toggleHelp: Ember.on(keyDown('shift+Slash'), function () {
+  keyboardToggleHelp: Ember.on(keyDown('shift+Slash'), function () {
     if (this.get('helpShowing')) {
       this.hideHelp();
     } else {
@@ -33,7 +34,7 @@ export default Ember.Controller.extend(EKMixin, {
     'review'
   ],
 
-  prevMode: Ember.on(keyDown('ArrowLeft'), function () {
+  keyboardPrevMode: Ember.on(keyDown('ArrowLeft'), function () {
     const routes = this.get('routeOrder');
     const routeName = this.get('currentRouteName');
     const idx = routes.findIndex((elem) => elem === routeName);
@@ -44,7 +45,7 @@ export default Ember.Controller.extend(EKMixin, {
     }
   }),
 
-  nextMode: Ember.on(keyDown('ArrowRight'), function () {
+  keyboardNextMode: Ember.on(keyDown('ArrowRight'), function () {
     const routes = this.get('routeOrder');
     const routeName = this.get('currentRouteName');
     const idx = routes.findIndex((elem) => elem === routeName);
@@ -56,9 +57,8 @@ export default Ember.Controller.extend(EKMixin, {
     }
   }),
 
-  taskModalOpen: false,
-  showAddTaskModal: Ember.on(keyDown('KeyA'), function () {
-    this.set('taskModalOpen', true);
+  keyboardShowAddTaskModal: Ember.on(keyDown('KeyA'), function () {
+    this.set('showAddTaskModal.taskModalOpen', true);
   }),
 
   showHelp () {

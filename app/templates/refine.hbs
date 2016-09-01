@@ -35,12 +35,18 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
+              <li><a class="clickable" {{action "changeDeck" activeTask null}}>None</a></li>
               {{#each decks as |deck|}}
                 <li><a class="clickable" {{action "changeDeck" activeTask deck}}>{{deck.title}}</a></li>
               {{/each}}
             </ul>
           </div>
         </div>
+        {{#if activeTask.deck}}
+          <span class="deck-name">
+            <small>({{activeTask.deck.title}})</small>
+          </span>
+        {{/if}}
         {{activeTask.title}}
         {{textarea value=activeTask.details class="form-control" rows=3 placeholder="Details..." focus-out="saveDetails"}}
       </div>

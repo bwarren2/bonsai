@@ -7,7 +7,7 @@ export default Ember.Controller.extend(FilteredTasks, {
   actions: {
     addTask () {
       const title = this.get('newTaskTitle');
-      const deck = this.get('application.activeDeck');
+      const deck = this.get('activeDeck.deck');
       this.set('newTaskTitle', '');
       if (title) {
         const attrs = {

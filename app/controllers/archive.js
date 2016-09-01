@@ -13,7 +13,8 @@ export default Ember.Controller.extend(FilteredTasks, {
 
     search () {
       // Search happens in real-time as the `s` attribute is updated. Don't
-      // need to do anything here.
+      // need to do anything here. But we have this action to suppress form
+      // submission events.
       return false;
     }
   }

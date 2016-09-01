@@ -4,9 +4,6 @@ export default Ember.Mixin.create({
   application: Ember.inject.controller(),
   activeDeck: Ember.inject.service(),
 
-  queryParams: ['deck'],
-  deck: Ember.computed.alias('activeDeck.deck'),
-
   filteredTasks: Ember.computed(
     'model.tasks.[]',
     'model.decks.[]',

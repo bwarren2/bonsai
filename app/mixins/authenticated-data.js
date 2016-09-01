@@ -1,22 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  // activeDeck: Ember.inject.service(),
-  // deck: Ember.computed.alias('activeDeck.deck'),
-
-  queryParams: {
-    deck: {
-      refreshModel: true
-    }
-  },
-
-  model (params) {
+  model () {
     const deckParams = {
       deleted_at: 'null'
     };
-    const taskParams = {
-      deck: params.deck
-    };
+    const taskParams = {};
     return Ember.RSVP.hash({
       currentUser: this.get('session.currentUser'),
       decks: this.store.query('deck', deckParams),

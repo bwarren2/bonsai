@@ -15,24 +15,26 @@
 
   <div>
     {{#each tasks as |task|}}
-      <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
-        {{task.title}}
-        <div class="status pull-right">
-          {{#if task.isCompleted}}
-            completed at {{task.completed_at}}
-          {{else}}
-            incomplete
+      {{#if (or (eq null activeDeck.deck) (eq task.deck.id activeDeck.deck))}}
+        <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
+          {{task.title}}
+          <div class="status pull-right">
+            {{#if task.isCompleted}}
+              completed at {{task.completed_at}}
+            {{else}}
+              incomplete
+            {{/if}}
+          </div>
+          {{#if task.focused}}
+            {{#if task.details}}
+              <hr>
+              <div>
+                {{markdown-to-html task.details}}
+              </div>
+            {{/if}}
           {{/if}}
         </div>
-        {{#if task.focused}}
-          {{#if task.details}}
-            <hr>
-            <div>
-              {{markdown-to-html task.details}}
-            </div>
-          {{/if}}
-        {{/if}}
-      </div>
+      {{/if}}
     {{/each}}
   </div>
 </div>

@@ -1,6 +1,10 @@
 <div class="jumbotron help">
   <div class="clearfix">
+  {{#if (eq kind "brainstorm") }}
     {{brainstorm-comics}}
+  {{else if (eq kind "refine")}}
+    {{refine-comics}}
+  {{/if}}
   </div>
   <h2 class="text-center">{{get-cartoon-help-title kind}}</h2>
   <p class="text-center">

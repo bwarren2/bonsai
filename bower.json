@@ -14,6 +14,7 @@
     "showdown": "^1.4.2",
     "lodash": "~3.10.0",
     "d3": "3.5.17",
-    "d4": "https://github.com/bwarren2/d4.git"
+    "d4": "https://github.com/bwarren2/d4.git",
+    "slick-carousel": "1.5.8"
   }
 }

@@ -1,10 +1,14 @@
 <div class="jumbotron help">
   <div class="clearfix">
-    <img
-       class="img-responsive center-block clickable"
-       src="{{cartoon-select kind=kind}}"
-       style="{{cartoon-image-height kind}}"
-       {{action "toggleHelp"}}>
+    {{#if (eq kind "brainstorm") }}
+      {{brainstorm-comics}}
+    {{else if (eq kind "refine")}}
+      {{refine-comics}}
+    {{else if (eq kind "plan")}}
+      {{plan-comics}}
+    {{else if (eq kind "execute")}}
+      {{execute-comics}}
+    {{/if}}
   </div>
   <h2 class="text-center">{{get-cartoon-help-title kind}}</h2>
   <p class="text-center">

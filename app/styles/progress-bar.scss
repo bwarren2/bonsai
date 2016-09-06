@@ -1,0 +1,15 @@
+.progress-bar {
+  transition: none;
+}
+
+.progress-container {
+  position: relative;
+
+  canvas {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: -120px;
+    right: -120px;
+  }
+}

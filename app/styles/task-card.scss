@@ -1,0 +1,18 @@
+.task-card {
+  @include box-shadow();
+  transition: text-decoration 0.5s, opacity 0.5s;
+
+  &.completed {
+    text-decoration: line-through;
+  }
+
+  &.focused {
+    border-color: black;
+  }
+
+  .actions {
+    float: right;
+    position: relative;
+    top: -6px;
+  }
+}

@@ -1,38 +1,38 @@
-<div class="jumbotron">
-  <div class="container typeset">
+<div class="container typeset">
+  {{#if showTitle}}
     <h1 class="text-center">Refine</h1>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        {{#slick-slider
-          adaptiveHeight=true
-          autoplay=false
-          slidesToShow=1
-          slidesToScroll=1
-          dots=true
-          fade=true}}
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/refine/refine_1.png">
-            <p>
-              It's worth adding a little context to any but the smallest and
-              most self-explanatory tasks.
-            </p>
-          </div>
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/refine/refine_2.png">
-            <p>
-              Can you do it right now? Or does it depend on another task, or a
-              certain time?
-            </p>
-          </div>
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/refine/refine_3.png">
-            <p>
-              Once you've refined all your tasks, some are done, some are
-              scheduled, and some need planning.
-            </p>
-          </div>
-        {{/slick-slider}}
-      </div>
+  {{/if}}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{#slick-slider
+        adaptiveHeight=true
+        autoplay=false
+        slidesToShow=1
+        slidesToScroll=1
+        dots=true
+        fade=true}}
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/refine/refine_1.png">
+          <p>
+            It's worth adding a little context to any but the smallest and most
+            self-explanatory tasks.
+          </p>
+        </div>
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/refine/refine_2.png">
+          <p>
+            Can you do it right now? Or does it depend on another task, or a
+            certain time?
+          </p>
+        </div>
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/refine/refine_3.png">
+          <p>
+            Once you've refined all your tasks, some are done, some are
+            scheduled, and some need planning.
+          </p>
+        </div>
+      {{/slick-slider}}
     </div>
   </div>
 </div>

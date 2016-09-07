@@ -26,8 +26,6 @@ export default Ember.Controller.extend(FilteredTasks, {
       'height': initialHeight
     });
 
-    this.get('progressBar').send('incrementCount');
-
     d4.select(jqSelect.get(0))
       .style('position', 'fixed')
       .transition()

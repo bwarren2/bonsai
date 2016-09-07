@@ -4,6 +4,24 @@ export default Ember.Mixin.create({
   session: Ember.inject.service(),
   activeDeck: Ember.inject.service(),
 
+  filteredAllTasks: Ember.computed(
+    'model.tasks.[]',
+    'model.decks.[]',
+    'model.tasks.@each.deck',
+    'activeDeck.deck',
+    function () {
+      const deck = this.get('activeDeck.deck');
+      if (deck) {
+        return this.get('model.tasks').filter((task) => {
+          return (
+            task.get('deck.id') === deck
+          );
+        });
+      }
+      return this.get('model.tasks');
+    }
+  ),
+
   filteredTasks: Ember.computed(
     'model.tasks.[]',
     'model.decks.[]',

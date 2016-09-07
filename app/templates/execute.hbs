@@ -12,7 +12,7 @@
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  {{progress-bar tasks=filteredTasks actionReceiver=progressBar animationDuration=animationDuration}}
+  {{progress-bar tasks=filteredAllTasks}}
 
   <div>
     {{#each filteredTasks as |task|}}

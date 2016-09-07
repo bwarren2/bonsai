@@ -5,7 +5,7 @@ export function getCartoonHelpTitle(params) {
 
   switch (mode) {
     case "brainstorm":
-      return "Braindump";
+      return "Brainstorm";
     case "refine":
       return "Refine";
     case "plan":

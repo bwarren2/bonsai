@@ -49,7 +49,7 @@
     "ember-cli-sass": "5.5.1",
     "ember-cli-sentry": "2.4.1",
     "ember-cli-showdown": "2.7.2",
-    "ember-cli-slick-carousel": "0.0.0",
+    "ember-cli-slick": "1.0.14",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-template-lint": "0.4.12",
     "ember-cli-test-loader": "^1.1.0",

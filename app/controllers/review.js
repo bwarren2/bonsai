@@ -14,6 +14,10 @@ export default Ember.Controller.extend(FilteredTasks, {
         return datestring([d.get('completed_at')]);
       })
     );
+    if (Object.keys(counts).length==0) {
+      return 0;
+    }
+    console.log(counts);
     return Object.keys(counts).map((key) => {
       return {
         label: key,

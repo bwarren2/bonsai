@@ -1,39 +1,39 @@
-<div class="jumbotron">
-  <div class="container typeset">
+<div class="container typeset">
+  {{#if showTitle}}
     <h1 class="text-center">Brainstorm</h1>
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        {{#slick-slider
-          adaptiveHeight=true
-          autoplay=false
-          slidesToShow=1
-          slidesToScroll=1
-          dots=true
-          fade=true}}
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_1.png">
-            <p>
-              With to-dos scattered all over, it's hard to know what to do
-              next, and things you can't do yet can still feel very demanding
-              and urgent.
-            </p>
-          </div>
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_2.png">
-            <p>
-              Get all of those things out of your head and off of scraps of
-              paper, and into some system. We suggest Bonsai!
-            </p>
-          </div>
-          <div>
-            <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_3.png">
-            <p>
-              Now, you have the power to organize things, and keep your mind
-              peaceful and your focus sharp.
-            </p>
-          </div>
-        {{/slick-slider}}
-      </div>
+  {{/if}}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{#slick-slider
+        adaptiveHeight=true
+        autoplay=false
+        slidesToShow=1
+        slidesToScroll=1
+        dots=true
+        fade=true}}
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_1.png">
+          <p>
+            With to-dos scattered all over, it's hard to know what to do next,
+            and things you can't do yet can still feel very demanding and
+            urgent.
+          </p>
+        </div>
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_2.png">
+          <p>
+            Get all of those things out of your head and off of scraps of
+            paper, and into some system. We suggest Bonsai!
+          </p>
+        </div>
+        <div>
+          <img class="img-responsive center-block" src="/images/splash/brainstorm/brainstorm_3.png">
+          <p>
+            Now, you have the power to organize things, and keep your mind
+            peaceful and your focus sharp.
+          </p>
+        </div>
+      {{/slick-slider}}
     </div>
   </div>
 </div>

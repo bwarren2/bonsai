@@ -74,29 +74,5 @@ export default Ember.Component.extend(InboundActions, {
       }
       return value;
     }
-  ),
-
-  actions: {
-    incrementCount () {
-      // Increase percentCompleted from current to current + taskPercentage,
-      // over animationDuration milliseconds.
-      const duration = this.get('animationDuration');
-      const percentCompleted = this.get('percentCompleted') / 100;
-      const taskPercentage = this.get('taskPercentage') / 100;
-      const progressBarWidth = this.$('.progress').outerWidth();
-      const originPixelWidth = (
-        progressBarWidth * percentCompleted
-      );
-      const destinationPixelWidth = (
-        progressBarWidth * taskPercentage
-          + progressBarWidth * percentCompleted
-      );
-      d4.select(this.$('.progress-bar').get(0))
-        .style('width', `${originPixelWidth}px`)
-        .transition()
-        .duration(duration)
-        .style('width', `${destinationPixelWidth}px`)
-      ;
-    }
-  }
+  )
 });

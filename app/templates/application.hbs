@@ -21,6 +21,9 @@
         <li>
           <a href="https://blog.taskbonsai.com">blog</a>
         </li>
+        {{#active-link}}
+          {{#link-to 'splash'}}How does this work?{{/link-to}}
+        {{/active-link}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if session.isAuthenticated}}

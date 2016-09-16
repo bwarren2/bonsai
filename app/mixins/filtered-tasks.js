@@ -5,7 +5,7 @@ export default Ember.Mixin.create({
   activeDeck: Ember.inject.service(),
 
   filteredAllTasks: Ember.computed(
-    'model.tasks.[]',
+    'model.tasks',
     'model.decks.[]',
     'model.tasks.@each.deck',
     'activeDeck.deck',
@@ -23,7 +23,7 @@ export default Ember.Mixin.create({
   ),
 
   filteredTasks: Ember.computed(
-    'model.tasks.[]',
+    'model.tasks',
     'model.decks.[]',
     'model.tasks.@each.deck',
     'activeDeck.deck',
@@ -42,7 +42,7 @@ export default Ember.Mixin.create({
     }
   ),
   completedTasks: Ember.computed(
-    'model.tasks.[]',
+    'model.tasks',
     'model.decks.[]',
     'model.tasks.@each.deck',
     'activeDeck.deck',

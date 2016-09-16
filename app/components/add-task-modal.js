@@ -21,15 +21,16 @@ export default Ember.Component.extend({
 
     addTask () {
       const title = this.get('newTaskTitle');
-      const deck = this.get('activeDeck.deck');
-      this.set('newTaskTitle', '');
-      if (title) {
-        const attrs = {
-          title,
-          deck
-        };
-        this.get('store').createRecord('task', attrs).save();
-      }
+      this.store.findRecord('deck', this.get('activeDeck.deck')).then((deck) => {
+        this.set('newTaskTitle', '');
+        if (title) {
+          const attrs = {
+            title,
+            deck
+          };
+          this.store.createRecord('task', attrs).save();
+        }
+      });
       this.set('open', false);
     }
   }

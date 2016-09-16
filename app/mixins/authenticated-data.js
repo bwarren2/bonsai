@@ -6,16 +6,18 @@ export default Ember.Mixin.create({
       deleted_at: 'null'
     };
     const taskParams = {};
-    return Ember.RSVP.hash({
-      currentUser: this.get('session.currentUser'),
-      decks: this.store.query('deck', deckParams),
-      tasks: this.store.query('task', taskParams)
-    }).catch(() => {
-      return Ember.RSVP.has({
+    if (this.get('session.isAuthenticated')) {
+      return Ember.RSVP.hash({
+        currentUser: this.get('session.currentUser'),
+        decks: this.store.findAll('deck'), // query('deck', deckParams),
+        tasks: this.store.findAll('task') // query('task', taskParams)
+      });
+    } else {
+      return Ember.RSVP.hash({
         currentUser: null,
         decks: [],
         tasks: []
       });
-    });
+    }
   }
 });

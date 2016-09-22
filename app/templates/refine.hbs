@@ -8,18 +8,22 @@
   {{#if activeTask}}
     <div class="action-area well">
       <div class="task-card well">
-        <div class="actions btn-group">
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
-            do
-          </button>
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
-            defer
-          </button>
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
-            destroy
-          </button>
+        <div class="row">
+          <div class="actions btn-group">
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
+              do now
+            </button>
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
+              do later
+            </button>
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
+              destroy
+            </button>
+          </div>
+          <div class="col-md-6">
+            {{ember-inline-edit value=activeTask.title onSave="saveTitle" saveLabel='✓'}}
+          </div>
         </div>
-        {{activeTask.title}}
         {{textarea value=activeTask.details class="form-control" rows=3 placeholder="Details..." focus-out="saveDetails"}}
       </div>
     </div>

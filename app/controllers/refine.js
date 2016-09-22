@@ -125,6 +125,13 @@ export default Ember.Controller.extend({
       }
     },
 
+    saveTitle () {
+      const task = this.get('activeTask');
+      if (task) {
+        task.save();
+      }
+    },
+
     makeActive (task) {
       if (!this.get('runningTask')) {
         this.set("activeTask", task);

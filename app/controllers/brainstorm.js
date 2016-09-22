@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend(FilteredTasks, {
+export default Ember.Controller.extend({
+  session: Ember.inject.service(),
   newTaskTitle: '',
 
   actions: {

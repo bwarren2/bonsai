@@ -1,10 +1,10 @@
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  {{progress-bar tasks=filteredAllTasks}}
+  {{progress-bar tasks=model.tasks}}
 
   <div>
-    {{#each filteredTasks as |task|}}
+    {{#each model.tasks as |task|}}
       {{#if (await task.readyToExecute)}}
         {{#unless task.isCompleted}}
           {{#if task.hasAfters}}

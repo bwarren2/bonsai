@@ -1,9 +1,16 @@
 import Ember from 'ember';
 import _ from 'lodash/lodash';
 import { datestring } from 'bonsai/helpers/datestring';
-import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend(FilteredTasks, {
+export default Ember.Controller.extend({
+  session: Ember.inject.service(),
+
+  completedTasks: Ember.computed('model.tasks', function () {
+    return this.get('model.tasks').filter((task) => {
+      return task.get("isCompleted");
+    });
+  }),
+
   countData: Ember.computed('completedTasks.@each.completed_at', function () {
     const min_date = new Date();
     min_date.setDate(min_date.getDate() - 14);

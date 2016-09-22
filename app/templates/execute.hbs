@@ -1,21 +1,10 @@
-{{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks}}
-{{/ember-wormhole}}
-
-{{#ember-wormhole to="out-box"}}
-  <div class="out-box">
-    <img src="/images/manilla-folder.png">
-    <img src="/images/manilla-folder.png">
-  </div>
-{{/ember-wormhole}}
-
 <div class="container">
   {{cartoon-modal kind="execute" help=session.currentUser.show_help_execute}}
 
-  {{progress-bar tasks=filteredAllTasks}}
+  {{progress-bar tasks=model.tasks}}
 
   <div>
-    {{#each filteredTasks as |task|}}
+    {{#each model.tasks as |task|}}
       {{#if (await task.readyToExecute)}}
         {{#unless task.isCompleted}}
           {{#if task.hasAfters}}

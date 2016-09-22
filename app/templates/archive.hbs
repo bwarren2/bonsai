@@ -1,7 +1,3 @@
-{{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks}}
-{{/ember-wormhole}}
-
 <div class="container">
   <div class="spacer"></div>
 
@@ -14,27 +10,25 @@
   <hr>
 
   <div>
-    {{#each tasks as |task|}}
-      {{#if (or (eq null activeDeck.deck) (eq task.deck.id activeDeck.deck))}}
-        <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
-          {{task.title}}
-          <div class="status pull-right">
-            {{#if task.isCompleted}}
-              completed at {{task.completed_at}}
-            {{else}}
-              incomplete
-            {{/if}}
-          </div>
-          {{#if task.focused}}
-            {{#if task.details}}
-              <hr>
-              <div>
-                {{markdown-to-html task.details}}
-              </div>
-            {{/if}}
+    {{#each model.tasks as |task|}}
+      <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
+        {{task.title}}
+        <div class="status pull-right">
+          {{#if task.isCompleted}}
+            completed at {{task.completed_at}}
+          {{else}}
+            incomplete
           {{/if}}
         </div>
-      {{/if}}
+        {{#if task.focused}}
+          {{#if task.details}}
+            <hr>
+            <div>
+              {{markdown-to-html task.details}}
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
     {{/each}}
   </div>
 </div>

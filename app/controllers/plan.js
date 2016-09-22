@@ -1,25 +1,26 @@
 import Ember from 'ember';
-import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend(FilteredTasks, {
+export default Ember.Controller.extend({
+  session: Ember.inject.service(),
+
   taskGraphData: Ember.computed(
-    'filteredTasks.@each.title',
-    'filteredTasks.@each.afters',
+    'model.tasks.@each.title',
+    'model.tasks.@each.afters',
     function () {
-      return this.get('filteredTasks');
+      return this.get('model.tasks');
     }
   ),
 
   actions: {
     addAfter (sourceId, targetId) {
-      const source = this.get('filteredTasks').findBy('id', sourceId);
-      const target = this.get('filteredTasks').findBy('id', targetId);
+      const source = this.get('model.tasks').findBy('id', sourceId);
+      const target = this.get('model.tasks').findBy('id', targetId);
       source.addAfter(target);
     },
 
     removeAfter (sourceId, targetId) {
-      const source = this.get('filteredTasks').findBy('id', sourceId);
-      const target = this.get('filteredTasks').findBy('id', targetId);
+      const source = this.get('model.tasks').findBy('id', sourceId);
+      const target = this.get('model.tasks').findBy('id', targetId);
       source.removeAfter(target);
     }
   }

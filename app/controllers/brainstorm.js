@@ -1,22 +1,17 @@
 import Ember from 'ember';
-import FilteredTasks from '../mixins/filtered-tasks';
 
-export default Ember.Controller.extend(FilteredTasks, {
+export default Ember.Controller.extend({
+  session: Ember.inject.service(),
   newTaskTitle: '',
 
   actions: {
     addTask () {
       const title = this.get('newTaskTitle');
-      this.store.findRecord('deck', this.get('activeDeck.deck')).then((deck) => {
-        this.set('newTaskTitle', '');
-        if (title) {
-          const attrs = {
-            title,
-            deck
-          };
-          this.store.createRecord('task', attrs).save();
-        }
-      });
+      this.set('newTaskTitle', '');
+      if (title) {
+        const attrs = { title };
+        this.get('store').createRecord('task', attrs).save();
+      }
     }
   }
 });

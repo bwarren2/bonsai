@@ -1,14 +1,3 @@
-{{#ember-wormhole to="deck-picker"}}
-  {{deck-picker data=decks}}
-{{/ember-wormhole}}
-
-{{#ember-wormhole to="out-box"}}
-  <div class="out-box">
-    <img src="/images/manilla-folder.png">
-    <img src="/images/manilla-folder.png">
-  </div>
-{{/ember-wormhole}}
-
 <div class="container">
   {{cartoon-modal kind="refine" help=session.currentUser.show_help_refine}}
 
@@ -19,35 +8,22 @@
   {{#if activeTask}}
     <div class="action-area well">
       <div class="task-card well">
-        <div class="actions btn-group">
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
-            do
-          </button>
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
-            defer
-          </button>
-          <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
-            destroy
-          </button>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Change deck
-              <span class="caret"></span>
+        <div class="row">
+          <div class="actions btn-group">
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
+              do now
             </button>
-            <ul class="dropdown-menu">
-              <li><a class="clickable" {{action "changeDeck" activeTask null}}>None</a></li>
-              {{#each decks as |deck|}}
-                <li><a class="clickable" {{action "changeDeck" activeTask deck}}>{{deck.title}}</a></li>
-              {{/each}}
-            </ul>
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
+              do later
+            </button>
+            <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
+              destroy
+            </button>
+          </div>
+          <div class="col-md-6">
+            {{ember-inline-edit value=activeTask.title onSave="saveTitle" saveLabel='✓'}}
           </div>
         </div>
-        {{#if activeTask.deck}}
-          <span class="deck-name">
-            <small>({{activeTask.deck.title}})</small>
-          </span>
-        {{/if}}
-        {{activeTask.title}}
         {{textarea value=activeTask.details class="form-control" rows=3 placeholder="Details..." focus-out="saveDetails"}}
       </div>
     </div>

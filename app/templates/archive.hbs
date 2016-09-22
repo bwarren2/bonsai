@@ -10,7 +10,7 @@
   <hr>
 
   <div>
-    {{#each tasks as |task|}}
+    {{#each model.tasks as |task|}}
       <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
         {{task.title}}
         <div class="status pull-right">

@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       this.set('newTaskTitle', '');
       if (title) {
         const attrs = { title };
-        this.store.createRecord('task', attrs).save();
+        this.get('store').createRecord('task', attrs).save();
       }
     }
   }

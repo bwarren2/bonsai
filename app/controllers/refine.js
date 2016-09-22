@@ -33,64 +33,6 @@ export default Ember.Controller.extend({
     ];
   }),
 
-  animateTaskAway (task, action) {
-    const duration = 3 * 1000;
-    const destination = {
-      top: -33,
-      right: 40,
-      scale: 0.3
-    };
-    const finalDestination = {
-      right: -900
-    };
-
-    const jqSelect = Ember.$('.action-area .task-card');
-    const initialWidth = jqSelect.outerWidth();
-    const initialHeight = jqSelect.outerHeight();
-    jqSelect.css({
-      'width': initialWidth,
-      'height': initialHeight
-    });
-
-    d4.select(jqSelect.get(0))
-      .style('position', 'fixed')
-      .transition()
-      .duration(1500)
-      .style('right', `${destination.right}px`)
-      .style('top', `${destination.top}px`)
-      .style('transform-origin', 'right')
-      .style('transform', `scale(${destination.scale})`)
-      .transition()
-      .duration(duration)
-      .style('right', `${finalDestination.right}px`)
-    ;
-
-    // Run later to allow animation to complete.
-    Ember.run.later(this, () => {
-      jqSelect.css({
-        'position': '',
-        'top': '',
-        'right': '',
-        'transform': '',
-        'transform-origin': '',
-        'width': '',
-        'height': ''
-      });
-      switch (action) {
-        case 'complete':
-          task.complete();
-          task.set('refined', true);
-          break;
-        case 'refine':
-          task.set('refined', true);
-          break;
-        default:
-          break;
-      }
-      task.save();
-    }, duration);
-  },
-
   actions: {
     do (task) {
       this.set('showTimer', true);
@@ -107,11 +49,12 @@ export default Ember.Controller.extend({
     },
 
     defer (task) {
-      this.animateTaskAway(task, 'refine');
+      task.set('refined', true);
     },
 
     done (task) {
-      this.animateTaskAway(task, 'complete');
+      task.complete();
+      task.set('refined', true);
     },
 
     destroy (task) {

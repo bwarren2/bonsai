@@ -4,7 +4,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
   showAddTaskModal: Ember.inject.service(),
-  activeDeck: Ember.inject.service(),
 
   open: Ember.computed.alias('showAddTaskModal.taskModalOpen'),
 
@@ -21,16 +20,11 @@ export default Ember.Component.extend({
 
     addTask () {
       const title = this.get('newTaskTitle');
-      this.store.findRecord('deck', this.get('activeDeck.deck')).then((deck) => {
-        this.set('newTaskTitle', '');
-        if (title) {
-          const attrs = {
-            title,
-            deck
-          };
-          this.store.createRecord('task', attrs).save();
-        }
-      });
+      this.set('newTaskTitle', '');
+      if (title) {
+        const attrs = { title };
+        this.store.createRecord('task', attrs).save();
+      }
       this.set('open', false);
     }
   }

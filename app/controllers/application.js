@@ -4,11 +4,9 @@ import { keyDown } from 'ember-keyboard';
 
 export default Ember.Controller.extend(EKMixin, {
   session: Ember.inject.service(),
-  activeDeck: Ember.inject.service(),
   showAddTaskModal: Ember.inject.service(),
 
   helpShowing: false,
-  activeDeckId: Ember.computed.alias('activeDeck.deck'),
 
   activateKeyboard: Ember.on('init', Ember.observer(
     'session.currentUser.enable_keyboard_shortcuts',

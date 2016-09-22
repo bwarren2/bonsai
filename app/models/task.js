@@ -19,7 +19,6 @@ export default Model.extend({
   details: attr('string', { defaultValue: "" }),
   befores: hasMany('task', { inverse: 'afters' }),
   afters: hasMany('task', { inverse: 'befores' }),
-  deck: belongsTo('deck'),
 
   // For task-graph position:
   graph_x: attr('number'),

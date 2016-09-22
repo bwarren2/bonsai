@@ -11,8 +11,7 @@
 
   <div>
     {{#each model.tasks as |task|}}
-      <div class="task-card well clickable {{if task.focused 'focused'}} {{if task.pendingCompletion 'completed'}}" {{action "focusTask" task on="click"}} data-task-id="{{task.id}}">
-        {{task.title}}
+      {{#task-card task=task action=(action "focusTask")}}
         <div class="status pull-right">
           {{#if task.isCompleted}}
             completed at {{task.completed_at}}
@@ -28,7 +27,7 @@
             </div>
           {{/if}}
         {{/if}}
-      </div>
+      {{/task-card}}
     {{/each}}
   </div>
 </div>

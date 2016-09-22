@@ -32,9 +32,7 @@
   <div class="row">
     <div class="messy-stack col-md-6 col-md-offset-3">
       {{#each inactiveTasks as |task index|}}
-        <div class="task-card well clickable" style="z-index: {{math 1000 "-" index}}" {{action "makeActive" task on="click"}}>
-          {{task.title}}
-        </div>
+        {{task-card task=task index=index action=(action "makeActive")}}
       {{/each}}
     </div>
   </div>

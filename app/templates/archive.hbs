@@ -19,14 +19,6 @@
             incomplete
           {{/if}}
         </div>
-        {{#if task.focused}}
-          {{#if task.details}}
-            <hr>
-            <div>
-              {{markdown-to-html task.details}}
-            </div>
-          {{/if}}
-        {{/if}}
       {{/task-card}}
     {{/each}}
   </div>

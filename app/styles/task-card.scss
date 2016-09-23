@@ -1,11 +1,43 @@
 .task-card {
   @include box-shadow();
-  transition: text-decoration 0.5s, opacity 0.5s;
 
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 1rem;
+  background-color: #fff;
+  border-radius: 2px;
+  margin: 0.5rem 0 1rem 0;
+  padding: 0;
+  position: relative;
+  transition: text-decoration 0.5s, opacity 0.5s, height 0.5s;
+
+  .card-flex {
+    display: flex;
+
+    .card-tab {
+      background-color: #ffa9a9;
+      border-radius: 2px 0 0 2px;
+      max-width: 50%;
+      width: 1rem;
+    }
+
+    .card-title {
+      display: flex;
+      flex-grow: 1;
+      flex: 1;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex: 1;
+      flex-grow: 0;
+      flex-basis: 10em;
+      text-align: right;
+      padding: 20px;
+      
+      .actions {
+        margin: 0 0 0 auto;
+      }
+    }
   }
 
   &.completed {
@@ -15,10 +47,25 @@
   &.focused {
     border-color: black;
   }
+}
 
-  .actions {
-    float: right;
+.active-task-card {
+  .clearfix {
+    padding: 1rem;
+  }
+
+  .card-title {
+    width: 70%;
+
+    .is-editing .input-group {
+      top: -0.3em;
+      left: -0.5em;
+    }
+  }
+
+  .card-actions {
     position: relative;
     top: -0.6rem;
+    float: right;
   }
 }

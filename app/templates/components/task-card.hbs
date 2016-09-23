@@ -1,2 +1,15 @@
-{{task.title}}
-{{yield}}
+<div class="card-flex">
+  <div class="card-tab"></div>
+  <div class="card-title">
+    {{task.title}}
+    {{#if (and task.focused task.details)}}
+      <hr>
+      <div>
+        {{markdown-to-html task.details}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="card-actions">
+    {{yield}}
+  </div>
+</div>

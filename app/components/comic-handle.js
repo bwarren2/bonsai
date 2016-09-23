@@ -10,18 +10,17 @@ export default Ember.Component.extend({
     'session.currentUser.show_help_plan',
     'session.currentUser.show_help_refine',
     'session.currentUser.show_help_execute',
+    function () {
+      const currentHelp = `show_help_${this.get('kind')}`;
+      const currentUser = this.get('session.currentUser');
+      const currentSetting = currentUser.get(currentHelp);
 
-    function(){
-    const currentHelp = `show_help_${this.get('kind')}`;
-    const currentUser = this.get('session.currentUser');
-    const currentSetting = currentUser.get(currentHelp);
-
-    return currentSetting;
-  }),
+      return currentSetting;
+    }
+  ),
 
   actions: {
     toggleHelp () {
-      console.log("hi");
       // Debounce by running in Ember.run
       Ember.run(this, function () {
         const currentHelp = `show_help_${this.get('kind')}`;

@@ -42,3 +42,19 @@ hr {
   margin-top: -30px;
   margin-bottom: 10px;
 }
+
+.flickering{
+  animation-duration: 1s;
+  animation-name: flicker;
+  animation-iteration-count: infinite;
+  animation-direction:alternate;
+}
+
+@keyframes flicker{
+  from{
+    opacity:1;
+  }
+  to{
+    opacity: 0.5;
+  }
+}

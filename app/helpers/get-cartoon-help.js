@@ -11,7 +11,7 @@ export function getCartoonHelp(params) {
     case "plan":
       return "If one thing depends on another before you can do it, map that out here. It'll help you later on!";
     case "execute":
-      return "Do whatever you can off the top of your list.";
+      return "Do whatever you can off of your list.";
     case "review":
       return "Have you gotten done what you wanted to get done? Congratulations!";
     default:

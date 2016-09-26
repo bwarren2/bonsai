@@ -1,10 +1,10 @@
-import { or } from 'bonsai/helpers/or';
+import { and } from 'bonsai/helpers/and';
 import { module, test } from 'qunit';
 
-module('Unit | Helper | or');
+module('Unit | Helper | and');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  let result = or([42]);
+  let result = and([42]);
   assert.ok(result);
 });

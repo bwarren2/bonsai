@@ -7,20 +7,22 @@
 
   {{#if activeTask}}
     <div class="action-area well">
-      <div class="task-card well">
-        <div class="row">
-          <div class="actions btn-group">
-            <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
-              do now
-            </button>
-            <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
-              do later
-            </button>
-            <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
-              destroy
-            </button>
+      <div class="active-task-card well">
+        <div class="clearfix">
+          <div class="card-actions">
+            <div class="actions btn-group">
+              <button class="btn btn-default" disabled={{showTimer}} {{action 'do' activeTask}} aria-label="do">
+                do now
+              </button>
+              <button class="btn btn-default" disabled={{showTimer}} {{action 'defer' activeTask}} aria-label="defer">
+                do later
+              </button>
+              <button class="btn btn-default" disabled={{showTimer}} {{action 'destroy' activeTask}} aria-label="destroy">
+                destroy
+              </button>
+            </div>
           </div>
-          <div class="col-md-6">
+          <div class="card-title">
             {{ember-inline-edit value=activeTask.title onSave="saveTitle" saveLabel='✓'}}
           </div>
         </div>
@@ -32,9 +34,7 @@
   <div class="row">
     <div class="messy-stack col-md-6 col-md-offset-3">
       {{#each inactiveTasks as |task index|}}
-        <div class="task-card well clickable" style="z-index: {{math 1000 "-" index}}" {{action "makeActive" task on="click"}}>
-          {{task.title}}
-        </div>
+        {{task-card task=task index=index action=(action "makeActive")}}
       {{/each}}
     </div>
   </div>

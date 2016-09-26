@@ -1,5 +1,3 @@
-$messy-pile-offset: 0.5em;
-
 .messy-stack {
   margin-bottom: 35px;
 
@@ -9,12 +7,10 @@ $messy-pile-offset: 0.5em;
   }
 
   .task-card:nth-child(odd) {
-    margin-left: $messy-pile-offset;
-    margin-right: -$messy-pile-offset;
+    transform: translateX(-0.5rem) rotate(-0.5deg);
   }
 
   .task-card:nth-child(even) {
-    margin-left: -$messy-pile-offset;
-    margin-right: $messy-pile-offset;
+    transform: translateX(0.5rem) rotate(1deg);
   }
 }

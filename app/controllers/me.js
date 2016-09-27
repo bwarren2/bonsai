@@ -17,10 +17,12 @@ export default Ember.Controller.extend({
     'session.currentUser.enable_keyboard_shortcuts',
     function () {
       const currentUser = this.get('session.currentUser');
-      this.store.findRecord(
-        'user',
-        currentUser.get('id')
-      ).then((user) => user.save());
+      if (currentUser) {
+        this.store.findRecord(
+          'user',
+          currentUser.get('id')
+        ).then((user) => user.save());
+      }
     }
   ),
 

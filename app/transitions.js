@@ -37,8 +37,9 @@ export default function(){
 
   this.transition(
     this.toRoute('me'),
-    this.use('fade', { duration: 5000 }),
-    this.reverse('fade', { duration: 5000 })
+    this.toRoute('signup'),
+    this.toRoute('login'),
+    this.use('fade', { duration: 500 }),
+    this.reverse('fade', { duration: 500 })
   );
-
 }

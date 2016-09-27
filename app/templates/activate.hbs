@@ -1,0 +1,12 @@
+<div class="container no-pulldown">
+  <div class="row">
+    {{#if model.success}}
+      Your account is active now! Please
+      {{#link-to 'login'}}log in{{/link-to}}.
+    {{else}}
+      Whoops, something went wrong. Please
+      <a href="mailto:taskbonsai@gmail.com">get in touch</a> and we'll try to
+      fix it!
+    {{/if}}
+  </div>
+</div>

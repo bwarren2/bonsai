@@ -12,7 +12,7 @@
     display: flex;
 
     .card-tab {
-      background-color: #ffa9a9;
+      background-color: $brand-primary;
       border-radius: 2px 0 0 2px;
       max-width: 50%;
       width: 1rem;
@@ -54,12 +54,22 @@
     padding: 1rem;
   }
 
+  .brand-color {
+    background-color: $brand-primary;
+    border-radius: 2px 0 0 2px;
+    max-width: 50%;
+    height: 4.5rem;
+    width: 1rem;
+    float: left;
+    margin-right: 0.5rem;
+  }
+
   .card-title {
-    width: 70%;
+    width: 65%;
 
     .is-editing .input-group {
-      top: -0.3em;
-      left: -0.5em;
+      top: -2.27em;
+      left: 0.5em;
     }
   }
 

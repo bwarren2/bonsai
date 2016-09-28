@@ -32,11 +32,12 @@ export default Ember.Controller.extend({
         method: 'POST',
         data
       }).then(
-        (data) => {
+        () => {
           this.set('errorMessage', {});
           this.set('successMessage', "Thanks! Check your email for a confirmation link.");
         },
         (errors) => {
+          this.set('successMessage', '');
           this.set('errorMessage', errors.responseJSON);
         }
       )
